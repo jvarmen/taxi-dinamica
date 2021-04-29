@@ -24,7 +24,19 @@
         {
         }
 
-        public DbSet<Setting> Settings { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Service> Services { get; set; }
+
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Partner> Partners { get; set; }
+
+        public DbSet<PartnerService> PartnerServices { get; set; }
+
+        public DbSet<Appointment> Appointments { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
