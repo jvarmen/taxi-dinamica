@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CeroFilas.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210430012600_InitialCreate")]
+    [Migration("20210430031604_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

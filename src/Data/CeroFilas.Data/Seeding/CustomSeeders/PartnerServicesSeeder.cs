@@ -19,12 +19,12 @@
             var partnerServices = new List<PartnerService>();
 
             // For each Partner add all Services from its Category
-            foreach (var partner in dbContext.Partners)
+            foreach (var partner in dbContext.Partners.ToArray())
             {
                 var partnerId = partner.Id;
                 var categoryId = partner.CategoryId;
 
-                foreach (var service in dbContext.Services.Where(x => x.CategoryId == categoryId))
+                foreach (var service in dbContext.Services.Where(x => x.CategoryId == categoryId).ToArray())
                 {
                     var serviceId = service.Id;
 
