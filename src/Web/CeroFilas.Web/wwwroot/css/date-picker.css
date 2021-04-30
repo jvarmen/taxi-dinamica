@@ -1,5 +1,5 @@
 .datepicker {
-    background-color: rgba(186, 85, 211, 0.7) !important;
+    background-color: rgba(74, 107, 216, 0.7) !important;
     color: #fff !important;
     border: none;
     padding: 10px !important
@@ -72,10 +72,10 @@ thead tr:nth-child(3) th {
 }
 
     .cell:hover {
-        border: 1px solid #BA55D3
+        border: 1px solid #4154f1
     }
 
     .cell.select {
-        background-color: #BA55D3;
+        background-color: #4154f1;
         color: #fff
     }

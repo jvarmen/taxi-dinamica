@@ -6,6 +6,18 @@
     ]
   },
   {
+    "outputFileName": "wwwroot/css/date-picker.min.css",
+    "inputFiles": [
+      "wwwroot/css/date-picker.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/date-picker.min.js",
+    "inputFiles": [
+      "wwwroot/js/date-picker.js"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/js/main.min.js",
     "inputFiles": [
       "wwwroot/js/main.js"

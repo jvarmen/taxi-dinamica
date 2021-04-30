@@ -21,6 +21,16 @@
       ]
     },
     {
+      "library": "bootstrap-datepicker@1.9.0",
+      "destination": "wwwroot/lib/bootstrap-datepicker/",
+      "files": [
+        "dist/css/bootstrap-datepicker.css",
+        "dist/css/bootstrap-datepicker.min.css",
+        "dist/js/bootstrap-datepicker.js",
+        "dist/js/bootstrap-datepicker.min.js"
+      ]
+    },
+    {
       "library": "jquery-validation@1.19.1",
       "destination": "wwwroot/lib/jquery-validation/",
       "files": [
