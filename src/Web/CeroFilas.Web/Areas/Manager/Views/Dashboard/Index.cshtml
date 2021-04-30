@@ -1,0 +1,11 @@
+﻿@model CeroFilas.Web.ViewModels.Partners.PartnersListViewModel
+@{
+    this.ViewData["Title"] = "Partner Manager Dashboard";
+}
+
+<h3>Bienvenido al Panel de Gestión de Empresas!</h3>
+<p>Aquí están las empresas que administras:</p>
+
+<div>
+    @await Component.InvokeAsync("PartnersSimpleList")
+</div>

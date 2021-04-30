@@ -1,0 +1,130 @@
+﻿@model CeroFilas.Web.ViewModels.Appointments.AppointmentsListViewModel
+@{
+    this.ViewData["Title"] = "Tus Citas";
+}
+
+@if (@Model.Appointments.Count() == 0)
+{
+    <div class="row">
+        <div class="col-lg-4 ml-lg-5">
+            <div class="about_text_2">
+                <p>
+                    Oh, no! Nada agendados por ahora...
+                </p>
+            </div>
+            <div class="about_text_highlight">
+                Agenda una cita en 3 simples pasos
+            </div>
+            <div class="about_text_highlight">
+                <ol>
+                    <li>Busca una empresa.</li>
+                    <li>Selecciona un servicio.</li>
+                    <li>Escoge dia y hora.</li>
+                </ol>
+            </div>
+            <div class="about_text_2">
+                <p>
+                    Te esperamos pronto.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 ml-lg-5">
+            <div class="button button-large button_1 elements_button mt-4">
+                <a asp-area="" asp-controller="Partners" asp-action="Index">
+                    <span>Buscar Empresas</span>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (@Model.Appointments.Count() > 0)
+{
+    <h2>Próximas (@Model.Appointments.Count())</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Fecha y Hora</th>
+                <th scope="col">Estado <span class="text-info">*</span></th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Servicio</th>
+                <th scope="col">Cancelación</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in this.Model.Appointments)
+            {
+                <tr>
+                    <th scope="row">@appointment.DateTime.ToString("f")</th>
+                    <td>
+                        @if (appointment.Confirmed == true)
+                        {
+                            <span class="badge badge-success">Confirmada</span>
+                        }
+                        else if (appointment.Confirmed == false)
+                        {
+                            <span class="badge badge-danger">Rechazada</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-secondary">Pendiente</span>
+                        }
+                    </td>
+                    <td>@appointment.PartnerName</td>
+                    <td>@appointment.PartnerAddress</td>
+                    <td>@appointment.ServiceName</td>
+                    <td>
+                        <a class="btn btn-outline-danger btn-sm"
+                           asp-area="" asp-controller="Appointments" asp-action="CancelAppointment" asp-route-id="@appointment.Id">
+                            Cancelar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-lg-10 ml-lg-5">
+            <div class="about_text_highlight">
+                <span class="text-info">*</span> Estado
+            </div>
+            <div class="about_text_2">
+                <ol>
+                    <li>
+                        <span class="badge badge-secondary">Pendiente</span>
+                        - Esperando respuesta de la empresa.
+                    </li>
+                    <li>
+                        <span class="badge badge-success">Confirmada</span>
+                        - Bien! Tu cita está confirmada.
+                        Te esperan en la fecha y hora establecidas.
+                    </li>
+                    <li>
+                        <span class="badge badge-danger">Declined</span>
+                        - Lo sentimos, la cita no puede realizarse en la fecha y hora establecidas.
+                         Consulte su correo electrónico para conocer las opciones de reprogramación.
+                    </li>
+                </ol>
+                <ul>
+                    <li>Puedes simplemente <strong>reservar de nuevo.</strong>
+                    <li>
+                        <div class="button button-large button_1 elements_button mt-4">
+                            <a asp-area="" asp-controller="Partners" asp-action="Index">
+                                <span>Buscar empresas</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @await Component.InvokeAsync("PastAppointments")
+</div>

@@ -261,10 +261,6 @@ namespace CeroFilas.Data.Migrations
                         .HasColumnType("nvarchar(700)")
                         .HasMaxLength(700);
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 

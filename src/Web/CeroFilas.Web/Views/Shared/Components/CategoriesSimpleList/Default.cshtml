@@ -1,0 +1,23 @@
+﻿@model CeroFilas.Web.ViewModels.Categories.CategoriesSimpleListViewModel
+@{
+    this.ViewData["Title"] = "Default";
+}
+
+<div class="btn-group dropright ml-5">
+    <button type="button" style="color: #BA55D3" class="btn btn-outline-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Search by Category
+    </button>
+    <div class="dropdown-menu">
+        @foreach (var category in Model.Categories)
+        {
+            <a class="dropdown-item" 
+               asp-area="" asp-controller="Partners" asp-action="Index" asp-route-sortId="@category.Id">
+                @category.Name (@category.PartnersCount)
+            </a>
+        }
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-area="" asp-controller="Partners" asp-action="Index">All Partners</a>
+    </div>
+</div>
+
+<hr class="bg-dark m-4" style="height: 6px;" />

@@ -1,0 +1,67 @@
+﻿@model CeroFilas.Web.ViewModels.Partners.PartnersPaginatedListViewModel
+@{
+    this.ViewData["Title"] = "Empresas Aliadas";
+}
+
+<div>
+    @await Component.InvokeAsync("CategoriesSimpleList")
+</div>
+<header class="section-header">
+    <h2 style="font-size: 1.5rem"><strong>@this.ViewData["CategoryName"]?.ToString()</strong></h2>
+</header>
+
+@if (!Model.Partners.Any())
+{
+    <div class="row">
+        <p class="my-5">Sin resultados.</p>
+    </div>
+}
+
+<div class="row row-eq-height">
+    @foreach (var Partner in Model.Partners)
+    {
+        <div class="col-xl-3 col-md-6">
+            <div class="doctor">
+                <div class="doctor_image"><img src="@Partner.ImageUrl" alt="" class="img-fluid"></div>
+                <div class="doctor_content">
+                    <div class="doctor_name">
+                        <a asp-area="" asp-controller="Partners" asp-action="Details" asp-route-id="@Partner.Id">@Partner.Name</a>
+                    </div>
+                    <div class="doctor_title"><strong>@Partner.CategoryName</strong></div>
+                    <div class="doctor_title">@Partner.Address</div>
+                    <div class="doctor_title ml-2">
+                        <div class="button button_1 elements_button mt-2">
+                            <a asp-area="" asp-controller="Partners" asp-action="Details" asp-route-id="@Partner.Id">
+                                <span>Ver Fechas</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@{
+    var prevDisabled = !Model.Partners.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Partners.HasNextPage ? "disabled" : "";
+}
+
+<div class="row text-center">
+    <div class="m-2">
+        <a asp-action="Index"
+           asp-route-sortId="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.Partners.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]" class="btn btn-outline-secondary btn-lg @prevDisabled">
+            &#x2190; Anterior
+        </a>
+    </div>
+    <div class="m-2">
+        <a asp-action="Index"
+           asp-route-sortId="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.Partners.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]" class="btn btn-outline-secondary btn-lg @nextDisabled">
+            Siguiente &#x2192;
+        </a>
+    </div>
+</div>

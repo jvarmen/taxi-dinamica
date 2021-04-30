@@ -1,0 +1,47 @@
+﻿@model CeroFilas.Web.ViewModels.Partners.PartnersListViewModel
+@{
+    this.ViewData["Title"] = "Partners";
+}
+
+<h2>
+    All Partners (@Model.Partners.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Partners" asp-action="AddPartner">Add New
+            Partner</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Logo</th>
+            <th scope="col">Serivicio</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Citas</th>
+            <th scope="col">Botón de borrar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Partner in this.Model.Partners)
+        {
+            <tr>
+                <th scope="row">@Partner.Name</th>
+                <td>
+                    <img class="align-self-center" src="@Partner.ImageUrl" style="width:180px;height:120px;">
+                </td>
+                <td>@Partner.CategoryName</td>
+                <td>@Partner.Address</td>
+                <td>@Partner.AppointmentsCount</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm" asp-area="Administration"
+                        asp-controller="Partners" asp-action="DeletePartner" asp-route-id="@Partner.Id">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

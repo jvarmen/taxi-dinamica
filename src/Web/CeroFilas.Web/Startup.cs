@@ -2,21 +2,30 @@
 {
     using System.Reflection;
 
+    using CeroFilas.Common;
     using CeroFilas.Data;
     using CeroFilas.Data.Common;
     using CeroFilas.Data.Common.Repositories;
     using CeroFilas.Data.Models;
     using CeroFilas.Data.Repositories;
     using CeroFilas.Data.Seeding;
+    using CeroFilas.Services.Cloudinary;
     using CeroFilas.Services.Data;
+    using CeroFilas.Services.Data.Appointments;
+    using CeroFilas.Services.Data.BlogPosts;
+    using CeroFilas.Services.Data.Categories;
+    using CeroFilas.Services.Data.Cities;
+    using CeroFilas.Services.Data.Partners;
+    using CeroFilas.Services.Data.PartnerServicesServices;
+    using CeroFilas.Services.Data.Services;
+    using CeroFilas.Services.DateTimeParser;
     using CeroFilas.Services.Mapping;
     using CeroFilas.Services.Messaging;
     using CeroFilas.Web.ViewModels;
-
+    using CloudinaryDotNet;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +44,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseSqlServer(this.configuration.GetConnectionString("MyDbConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -47,13 +56,8 @@
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
 
-            services.AddControllersWithViews(
-                options =>
-                    {
-                        options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-                    }).AddRazorRuntimeCompilation();
+            services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);
 
@@ -62,9 +66,31 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            // // External Login Setups
+            // services.AddAuthentication().AddFacebook(facebookOptions =>
+            // {
+            //     facebookOptions.AppId = this.configuration["Authentication:Facebook:AppId"];
+            //     facebookOptions.AppSecret = this.configuration["Authentication:Facebook:AppSecret"];
+            // });
+
+            // Cloudinary Setup
+            Cloudinary cloudinary = new Cloudinary(new Account(
+                GlobalConstants.CloudName, // this.configuration["Cloudinary:CloudName"],
+                this.configuration["Cloudinary:ApiKey"],
+                this.configuration["Cloudinary:ApiSecret"]));
+            services.AddSingleton(cloudinary);
+
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IBlogPostsService, BlogPostsService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<IServicesService, ServicesService>();
+            services.AddTransient<ICitiesService, CitiesService>();
+            services.AddTransient<IPartnersService, PartnersService>();
+            services.AddTransient<IPartnerServicesService, PartnerServicesService>();
+            services.AddTransient<IAppointmentsService, AppointmentsService>();
+            services.AddTransient<IDateTimeParserService, DateTimeParserService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,17 +102,24 @@
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                dbContext.Database.Migrate();
+
+                if (env.IsDevelopment())
+                {
+                    dbContext.Database.Migrate();
+                }
+
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
             if (env.IsDevelopment())
             {
+                app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
                 app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
+                app.UseDatabaseErrorPage();
             }
             else
             {
+                app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }

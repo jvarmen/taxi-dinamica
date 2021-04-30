@@ -1,0 +1,156 @@
+﻿namespace CeroFilas.Services.Data.Tests.UseInMemoryDatabase
+{
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using CeroFilas.Data.Models;
+    using CeroFilas.Services.Data.Partners;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Xunit;
+
+    public class PartnersServiceTests : BaseServiceTests
+    {
+        private IPartnersService Service => this.ServiceProvider.GetRequiredService<IPartnersService>();
+
+        /*
+        TODO: Task<IEnumerable<T>> GetAllAsync<T>();
+
+        TODO: Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
+            string searchString,
+            int? sortId,
+            int pageSize,
+            int pageIndex);
+
+        TODO: Task<T> GetByIdAsync<T>(string id);
+         */
+
+        [Fact]
+        public async Task GetCountForPaginationAsyncShouldReturnCorrectCount()
+        {
+            await this.CreatePartnerAsync(Guid.NewGuid().ToString());
+            await this.CreatePartnerAsync(Guid.NewGuid().ToString());
+            await this.CreatePartnerAsync(Guid.NewGuid().ToString());
+
+            var actual = await this.Service.GetCountForPaginationAsync(" ", 0);
+            Assert.Equal(0, actual);
+        }
+
+        [Fact]
+        public async Task GetAllIdsByCategoryAsyncShouldReturnCorrectCount()
+        {
+            var Partner1 = new Partner
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = new NLipsum.Core.Sentence().ToString(),
+                CategoryId = 5,
+                Address = new NLipsum.Core.Sentence().ToString(),
+                Website = new NLipsum.Core.Word().ToString(),
+                ImageUrl = new NLipsum.Core.Word().ToString(),
+            };
+            var Partner2 = new Partner
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = new NLipsum.Core.Sentence().ToString(),
+                CategoryId = 5,
+                Address = new NLipsum.Core.Sentence().ToString(),
+                Website = new NLipsum.Core.Word().ToString(),
+                ImageUrl = new NLipsum.Core.Word().ToString(),
+            };
+            var Partner3 = new Partner
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = new NLipsum.Core.Sentence().ToString(),
+                CategoryId = 5,
+                Address = new NLipsum.Core.Sentence().ToString(),
+                Website = new NLipsum.Core.Word().ToString(),
+                ImageUrl = new NLipsum.Core.Word().ToString(),
+                Rating = 4,
+                RatersCount = 1,
+            };
+
+            await this.DbContext.Partners.AddRangeAsync(Partner1, Partner2, Partner3);
+            await this.DbContext.SaveChangesAsync();
+
+            var expected = this.DbContext.Partners.Where(x => x.CategoryId == 5).Count();
+            var actual = await this.Service.GetAllIdsByCategoryAsync(5);
+            var actualCount = 0;
+            foreach (var result in actual)
+            {
+                actualCount++;
+            }
+
+            Assert.Equal(expected, actualCount);
+        }
+
+        [Fact]
+        public async Task AddAsyncShouldAddCorrectly()
+        {
+            var newGuidId = Guid.NewGuid().ToString();
+            await this.CreatePartnerAsync(newGuidId);
+
+            var name = new NLipsum.Core.Sentence().ToString();
+            var categoryId = 1;
+            var cityId = 1;
+            var address = new NLipsum.Core.Sentence().ToString();
+            var website = new NLipsum.Core.Word().ToString();
+            var imageUrl = new NLipsum.Core.Word().ToString();
+
+            await this.Service.AddAsync(name, categoryId, cityId, address, website, imageUrl);
+
+            var PartnersCount = await this.DbContext.Partners.CountAsync();
+            Assert.Equal(2, PartnersCount);
+        }
+
+        [Fact]
+        public async Task DeleteAsyncShouldDeleteCorrectly()
+        {
+            var newGuidId = Guid.NewGuid().ToString();
+
+            var Partner = await this.CreatePartnerAsync(newGuidId);
+
+            await this.Service.DeleteAsync(Partner.Id);
+
+            var PartnersCount = this.DbContext.Partners.Where(x => !x.IsDeleted).ToArray().Count();
+            var deletedPartner = await this.DbContext.Partners.FirstOrDefaultAsync(x => x.Id == Partner.Id);
+            Assert.Equal(0, PartnersCount);
+            Assert.Null(deletedPartner);
+        }
+
+        [Fact]
+        public async Task RatePartnerAsyncShouldGiveCorrectRating()
+        {
+            var newGuidId = Guid.NewGuid().ToString();
+            var Partner = await this.CreatePartnerAsync(newGuidId);
+
+            var rateValue = 4;
+            await this.Service.RatePartnerAsync(newGuidId, rateValue);
+
+            var expected = rateValue;
+            var actual = Partner.Rating;
+
+            Assert.Equal(expected, actual);
+        }
+
+        private async Task<Partner> CreatePartnerAsync(string newGuidId)
+        {
+            var Partner = new Partner
+            {
+                Id = newGuidId,
+                Name = new NLipsum.Core.Sentence().ToString(),
+                CategoryId = 1,
+                Address = new NLipsum.Core.Sentence().ToString(),
+                Website = new NLipsum.Core.Word().ToString(),
+                ImageUrl = new NLipsum.Core.Word().ToString(),
+                Rating = 4,
+                RatersCount = 1,
+            };
+
+            await this.DbContext.Partners.AddAsync(Partner);
+            await this.DbContext.SaveChangesAsync();
+            this.DbContext.Entry<Partner>(Partner).State = EntityState.Detached;
+            return Partner;
+        }
+    }
+}

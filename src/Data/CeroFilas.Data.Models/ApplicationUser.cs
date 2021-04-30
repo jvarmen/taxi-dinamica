@@ -16,7 +16,18 @@ namespace CeroFilas.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Appointments = new HashSet<Appointment>();
+            this.Partners = new HashSet<Partner>();
         }
+        // Personal Data
+        [PersonalData]
+        public string Names { get; set; }
+
+        [PersonalData]
+        public string LastNames { get; set; }
+        
+        [PersonalData]
+        public int DocumentId { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
@@ -33,5 +44,9 @@ namespace CeroFilas.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<Appointment> Appointments { get; set; }
+
+        public virtual ICollection<Partner> Partners { get; set; }
     }
 }

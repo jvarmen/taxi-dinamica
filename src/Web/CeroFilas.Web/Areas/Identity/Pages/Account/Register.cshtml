@@ -1,0 +1,106 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<section id="register">
+    <!-- Registro -->
+    <div class="row register-tabs" data-aos="fade-up">
+        <div class="col-lg-6">
+            <h3>Crea una nueva cuenta</h3>
+
+            <!-- Tabs -->
+            <ul class="nav nav-pills mb-3">
+                <li>
+                    <a class="nav-link active" data-bs-toggle="pill" href="#user">Usuario</a>
+                </li>
+                <li>
+                    <a class="nav-link" data-bs-toggle="pill" href="#partner">Empresa</a>
+                </li>
+            </ul><!-- End Tabs -->
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+
+                <div class="tab-pane fade show active" id="user">
+                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <h3>Registrate como usuario.</h3>
+                        <hr />
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Input.Names"></label>
+                            <input asp-for="Input.Names" class="form-control" />
+                            <span asp-validation-for="Input.Names" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.LastNames"></label>
+                            <input asp-for="Input.LastNames" class="form-control" />
+                            <span asp-validation-for="Input.LastNames" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.DocumentId"></label>
+                            <input asp-for="Input.DocumentId" class="form-control" />
+                            <span asp-validation-for="Input.DocumentId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.PhoneNumber"></label>
+                            <input asp-for="Input.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrarme</button>
+                    </form>
+                </div><!-- End User Tab -->
+
+                <div class="tab-pane fade show" id="partner">
+                    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <h3>Registrate como Empresa.</h3>
+                        <hr />
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrarme</button>
+                    </form>
+                </div><!-- End Partner Tab -->
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+            <img src="~/img/register-2.png" class="img-fluid" alt="">
+        </div>
+
+    </div><!-- End register Tabs -->
+</section>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

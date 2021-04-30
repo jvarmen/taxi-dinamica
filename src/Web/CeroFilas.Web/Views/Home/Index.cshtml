@@ -1,9 +1,510 @@
-﻿@using CeroFilas.Common
+﻿@model CeroFilas.Web.ViewModels.Home.IndexViewModel
 @{
-    this.ViewData["Title"] = "Home Page";
+    this.ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section id="about" class="about">
+
+    <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+
+            <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="content">
+                    <h3>QUIÉNES SOMOS</h3>
+                    <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti
+                        reprehenderit.</h2>
+                    <p>
+                        Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor
+                        consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est
+                        corrupti.
+                    </p>
+                    <div class="text-left text-lg-start">
+                        <a href="#contact"
+                            class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                            <span>Read More</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                <img src="~/img/about.jpg" class="img-fluid" alt="">
+            </div>
+
+        </div>
+    </div>
+
+</section><!-- End About Section -->
+
+<!-- ======= Values Section ======= -->
+<section id="values" class="values">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <h2>Nuestros valores</h2>
+            <p>Herramienta de productividad para empresas</p>
+        </header>
+
+        <div class="row">
+
+            <div class="col-lg-4">
+                <div class="box" data-aos="fade-up" data-aos-delay="200">
+                    <img src="~/img/values-1.png" class="img-fluid" alt="">
+                    <h3>Únete registrando tu empresa</h3>
+                    <p>Podrás organizar citas con tus clientes y muchas funcionalidades más.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="box" data-aos="fade-up" data-aos-delay="400">
+                    <img src="~/img/values-2.png" class="img-fluid" alt="">
+                    <h3>Optimiza tu crecimiento</h3>
+                    <p>En nuestra plataforma tienes el control de tu tiempo y servicios.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <div class="box" data-aos="fade-up" data-aos-delay="600">
+                    <img src="~/img/values-3.png" class="img-fluid" alt="">
+                    <h3>Cumple tus objetivos</h3>
+                    <p>Mediremos tu rendimiento y beneficio generado.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- End Values Section -->
+
+<!-- ======= Counts Section ======= -->
+<section id="counts" class="counts">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="count-box">
+                    <i class="bi bi-emoji-smile"></i>
+                    <div>
+                        <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Clientes Felices</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="count-box">
+                    <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
+                    <div>
+                        <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Citas Agendadas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="count-box">
+                    <i class="bi bi-headset" style="color: #15be56;"></i>
+                    <div>
+                        <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Horas de Soporte</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="count-box">
+                    <i class="bi bi-people" style="color: #bb0852;"></i>
+                    <div>
+                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
+                            class="purecounter"></span>
+                        <p>Aliados</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Counts Section -->
+
+<!-- ======= Features Section ======= -->
+<section id="features" class="features">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <h2>Explorar Servicios</h2>
+            <p>Categorías</p>
+        </header>
+
+        <div class="row">
+
+            <div class="col-lg-4">
+                <img src="~/img/features-3.png" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0 d-flex">
+                <div class="row align-self-center gy-4">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
+                            <a asp-area="" asp-controller="Partners" asp-action="Index" asp-route-sortId="@category.Id">
+                                <div class="feature-box d-flex align-items-center">
+                                    <i class="bi bi-check"></i>
+                                    <h3>@category.Name</h3>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div> <!-- / row -->
+    </div>
+
+</section><!-- End Features Section -->
+
+<!-- ======= Pricing Section ======= -->
+<section id="pricing" class="pricing">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <h2>Ayuda</h2>
+            <p>Cómo funciona</p>
+        </header>
+
+        <div class="row gy-4" data-aos="fade-left">
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="box">
+                    <h3 style="color: #07d5c0;">Registrate e Ingresa</h3>
+                    <p>Crea una cuenta con tus datos y luego inicia sesión </p>
+                    <img src="~/img/pricing-free.png" class="img-fluid" alt="">
+                    <ul>
+                        <li>Autenticación</li>
+                        <li>Personal</li>
+                    </ul>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn-buy">Crear Cuenta</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="box">
+                    <h3 style="color: #65c600;">Busca Servicios</h3>
+                    <p>Escoge la empresa y servicio deseado</p>
+                    <img src="~/img/pricing-starter.png" class="img-fluid" alt="">
+                    <ul>
+                        <li>Selección</li>
+                        <li>Variedad</li>
+                    </ul>
+                    <a asp-area="" asp-controller="Categories" asp-action="Index" class="btn-buy">Explorar</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="box">
+                    <h3 style="color: #ff901c;">Escoge un turno</h3>
+                    <p>Selecciona el día y hora que prefieras</p>
+                    <img src="~/img/pricing-business.png" class="img-fluid" alt="">
+                    <ul>
+                        <li>Flexible</li>
+                        <li>Rápido</li>
+                    </ul>
+                    <a href="#" class="btn-buy">Explorar</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                <div class="box">
+                    <span class="featured">Final</span>
+                    <h3 style="color: #ff0071;">Prepárate</h3>
+                    <p>Recibirás información para cumplir con tu cita</p>
+                    <img src="~/img/pricing-ultimate.png" class="img-fluid" alt="">
+                    <ul>
+                        <li>Confirmación</li>
+                        <li>Asistencia</li>
+                    </ul>
+                    <a asp-controller="Appointments" asp-action="Index" class="btn-buy">Consultar</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- End Pricing Section -->
+
+<!-- ======= F.A.Q Section ======= -->
+<section id="faq" class="faq">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <h2>F.A.Q</h2>
+            <p>Preguntas Frecuentes</p>
+        </header>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- F.A.Q List 1-->
+                <div class="accordion accordion-flush" id="faqlist1">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-1">
+                                ¿Puedo cancelar mi cita?
+                            </button>
+                        </h2>
+                        <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                            <div class="accordion-body">
+                                Sí, ingresando en este link [<a asp-controller="Appointments" asp-action="Index" class="btn-buy">Mis Citas</a>] y buscando tu cita agendada.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-2">
+                                ¿Qué pasa si llego tarde a mi cita?
+                            </button>
+                        </h2>
+                        <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                            <div class="accordion-body">
+                                Tienes tolerancia de 10 min, de lo contrario, tu cita será cancelada y tendrás que generar una nueva.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq-content-3">
+                                ¿Puedo cambiar la fecha y la hora de mi cita?
+                            </button>
+                        </h2>
+                        <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                            <div class="accordion-body">
+                                No, tendrá que cancelar la cita y crear una nueva
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+
+                <!-- F.A.Q List 2-->
+                <div class="accordion accordion-flush" id="faqlist2">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq2-content-1">
+                                ¿Qué pasa si olvido algún documento el día de la cita?
+                            </button>
+                        </h2>
+                        <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                            <div class="accordion-body">
+                                Si hay disponibilidad, se te asignará una nueva hora ese mismo día o de lo contrario, se reagendará tu cita.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq2-content-2">
+                                ¿Por qué crear un sistema de citas?
+                            </button>
+                        </h2>
+                        <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                            <div class="accordion-body">
+                                Esta nueva modalidad permitirá tener un mejor control sobre los tiempos para cada diligencia y sobre todo, mejorará la experiencia del ciudadano a la hora de organizar su día.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#faq2-content-3">
+                                ¿Puedo agendar varias citas el mismo día?
+                            </button>
+                        </h2>
+                        <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                            <div class="accordion-body">
+                                Sí, siempre y cuando no se cruce la hora de las citas a realizar
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- End F.A.Q Section -->
+
+<!-- ======= Team Section ======= -->
+<section id="team" class="team">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <h2>Equipo</h2>
+            <p>Nuestro arduo equipo de trabajo</p>
+        </header>
+
+        <div class="row gy-4">
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="~/img/team/team-1.jpg" class="img-fluid" alt="">
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Walter White</h4>
+                        <span>Chief Executive Officer</span>
+                        <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum
+                            exercitationem iure minima enim corporis et voluptate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="~/img/team/team-2.jpg" class="img-fluid" alt="">
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Sarah Jhonson</h4>
+                        <span>Product Manager</span>
+                        <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit
+                            corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="~/img/team/team-3.jpg" class="img-fluid" alt="">
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>William Anderson</h4>
+                        <span>CTO</span>
+                        <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates
+                            enim aut architecto porro aspernatur molestiae modi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="~/img/team/team-4.jpg" class="img-fluid" alt="">
+                        <div class="social">
+                            <a href=""><i class="bi bi-twitter"></i></a>
+                            <a href=""><i class="bi bi-facebook"></i></a>
+                            <a href=""><i class="bi bi-instagram"></i></a>
+                            <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Amanda Jepson</h4>
+                        <span>Accountant</span>
+                        <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid
+                            doloremque ut possimus ipsum officia.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- End Team Section -->
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+
+    <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+            <h2>Contactp</h2>
+            <p>Contáctanos</p>
+        </header>
+
+        <div class="row gy-4">
+
+            <div class="col-lg-12">
+
+                <div class="row gy-4">
+                    <div class="col-md-3">
+                        <div class="info-box">
+                            <i class="bi bi-geo-alt"></i>
+                            <h3>Dirección</h3>
+                            <p>A108 Adam Street,<br>New York, NY 535022</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-box">
+                            <i class="bi bi-telephone"></i>
+                            <h3>Línea de Atencíon</h3>
+                            <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-box">
+                            <i class="bi bi-envelope"></i>
+                            <h3>Correo Electrónico</h3>
+                            <p>info@example.com<br>contact@example.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info-box">
+                            <i class="bi bi-clock"></i>
+                            <h3>Horas abierto</h3>
+                            <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- End Contact Section -->
