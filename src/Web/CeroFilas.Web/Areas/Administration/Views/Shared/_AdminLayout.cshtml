@@ -1,92 +1,116 @@
 ﻿@using CeroFilas.Common
 <!DOCTYPE html>
-<html>
+<html lang="es_CO">
+
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
 
+    <!-- Favicons -->
+    <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
     <environment names="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/responsive.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/sidebar.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="~/plugins/aos/aos.css" rel="stylesheet">
+        <link href="~/plugins/remixicon/remixicon.css" rel="stylesheet">
+        <link href="~/plugins/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="~/plugins/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="~/css/style.css" rel="stylesheet">
     </environment>
     <environment names="Staging,Production">
         <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/plugins/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/responsive.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/sidebar.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/plugins/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="~/plugins/aos/aos.css" rel="stylesheet">
+        <link href="~/plugins/remixicon/remixicon.css" rel="stylesheet">
+        <link href="~/plugins/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="~/plugins/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="~/css/style.min.css" rel="stylesheet">
     </environment>
-
     @this.RenderSection("Styles", required: false)
 </head>
+
 <body>
+    <partial name="_CookieConsentPartial" />
 
-    <div class="super_container">
+    <!-- ======= Header ======= -->
+    <partial name="_MenuPartial" />
 
-        <!-- Home -->
-        <partial name="_AdminHeaderPartial" />
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+        <div class="container" data-aos="fade-bottom">
 
-        <div style="padding-top: 90px;">
+            <ol>
+                <li><a href="/">Inicio</a></li>
+                <li>Adminitración</li>
+                <li>@this.ViewData["Title"].ToString()</li>
+            </ol>
+            <h2>@this.ViewData["Title"].ToString()</h2>
 
-            <div class="text-center">
-                <a style="color: #BA55D3" asp-area="" asp-controller="Home" asp-action="Index"><strong>BACK TO HOME PAGE</strong></a>
-            </div>
-            <hr class="bg-dark mx-4" style="height: 6px;" />
-            <div class="d-flex" id="wrapper">
-
-                <!-- Sidebar -->
-                <partial name="_AdminSidebarPartial" />
-
-                <!-- Page Content -->
-                <div id="page-content-wrapper">
-                    <div class="container-fluid">
-                        <div class="col-12">
-                            <main role="main">
-                                @this.RenderBody()
-                            </main>
-                        </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <main id="main">
+        <section class='@this.ViewData["cClass"]?.ToString()'>
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-3">
+                    <partial name="_AdminSidebarPartial"></partial>
+                    </div>
+                    <div class="col-lg-9">
+                        @this.RenderBody()
                     </div>
                 </div>
-
             </div>
-        </div>
-        <hr class="bg-dark mx-4" style="height: 6px;" />
-        
-    </div>
+        </section>
+    </main><!-- End #main -->
 
+
+    <!-- ======= Footer ======= -->
+    <partial name="_FooterPartial" />
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- plugins JS Files -->
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-        <script src="~/js/popper.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
-        <script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js" asp-append-version="true"></script>
-        <script src="~/plugins/easing/easing.js" asp-append-version="true"></script>
-        <script src="~/plugins/parallax-js-master/parallax.min.js" asp-append-version="true"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"
+            asp-append-version="true"></script>
+        <script src="~/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="~/plugins/aos/aos.js"></script>
+        <script src="~/plugins/swiper/swiper-bundle.min.js"></script>
+        <script src="~/plugins/purecounter/purecounter.js"></script>
+        <script src="~/plugins/isotope-layout/isotope.pkgd.js"></script>
+        <script src="~/plugins/glightbox/js/glightbox.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="~/js/main.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
-        <script src="~/js/popper.min.js" asp-append-version="true"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
-        <script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js" asp-append-version="true"></script>
-        <script src="~/plugins/easing/easing.js" asp-append-version="true"></script>
-        <script src="~/plugins/parallax-js-master/parallax.min.js" asp-append-version="true"></script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+        <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"
+            asp-append-version="true"></script>
+        <script src="~/plugins/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="~/plugins/aos/aos.js"></script>
+        <script src="~/plugins/swiper/swiper-bundle.min.js"></script>
+        <script src="~/plugins/purecounter/purecounter.js"></script>
+        <script src="~/plugins/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="~/plugins/glightbox/js/glightbox.min.js"></script>
 
+        <!-- Template Main JS File -->
+        <script src="~/js/main.min.js"></script>
+    </environment>
     @this.RenderSection("Scripts", required: false)
 </body>
+
 </html>
