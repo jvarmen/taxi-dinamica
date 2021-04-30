@@ -32,3 +32,16 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'CeroFilaConnection'
+    appName: 'demo-cero-filas'
+    package: $(System.DefaultWorkingDirectory)/**/*.zip    
