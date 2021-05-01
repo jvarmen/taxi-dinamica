@@ -1,4 +1,4 @@
-﻿@model CeroFilas.Web.ViewModels.Partners.PartnerInputModel
+@model CeroFilas.Web.ViewModels.Partners.PartnerInputModel
 @{
     this.ViewData["Title"] = "Añadir Empresa";
     var categories = this.ViewData["Categories"] as SelectList;
@@ -6,7 +6,7 @@
 }
 
 <div class="col-lg-6">
-    <h2>Nueva Empresa</h2>
+    <h2>Información de Mi Empresa</h2>
     <form method="post" enctype="multipart/form-data" class="pt-4">
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Nombre de la Empresa</label>
@@ -71,12 +71,12 @@
         <div class="form-group row">
             <div class="col-sm-6 text-right">
                 <button type="submit" class="btn btn-success"
-                        asp-area="Administration" asp-controller="Partners" asp-action="AddPartner">
+                        asp-area="Manager" asp-controller="Partners" asp-action="AddPartner">
                     Enviar datos
                 </button>
             </div>
             <div class="col-sm-6">
-                <a class="btn btn-danger" asp-area="Administration" asp-controller="Partners" asp-action="Index">Cancel</a>
+                <a class="btn btn-danger" asp-area="Manager" asp-controller="Partners" asp-action="Index">Cancel</a>
             </div>
         </div>
     </form>

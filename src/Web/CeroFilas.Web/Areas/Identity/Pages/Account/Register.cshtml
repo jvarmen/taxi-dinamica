@@ -4,39 +4,33 @@
     ViewData["Title"] = "Registro";
 }
 
-<section id="register">
+<section id="register" class="p-0">
     <!-- Registro -->
     <div class="row register-tabs" data-aos="fade-up">
         <div class="col-lg-6">
             <h3>Crea una nueva cuenta</h3>
-
-            <!-- Tabs -->
-            <ul class="nav nav-pills mb-3">
-                <li>
-                    <a class="nav-link active" data-bs-toggle="pill" href="#user">Usuario</a>
-                </li>
-                <li>
-                    <a class="nav-link" data-bs-toggle="pill" href="#partner">Empresa</a>
-                </li>
-            </ul><!-- End Tabs -->
-
-            <!-- Tab Content -->
-            <div class="tab-content">
-
-                <div class="tab-pane fade show active" id="user">
-                    <h3>Registrate como usuario.</h3>
-                    <hr />
-                </div><!-- End User Tab -->
-
-                <div class="tab-pane fade show" id="partner">
-                    <h3>Registrate como Empresa.</h3>
-                    <hr />
-                </div><!-- End Partner Tab -->
-
-            </div>
+            <br>
             <div class="my-2">
                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                     <div asp-validation-summary="All" class="text-danger"></div>
+                    <ul class="nav nav-pills mb-3">
+                        <li>
+                            <a class="nav-link active selectUser" data-bs-toggle="pill" href="#user">Usuario</a>
+                        </li>
+                        <li>
+                            <a class="nav-link selectPartner" data-bs-toggle="pill" href="#partner">Empresa</a>
+                        </li>
+                        <input asp-for="Input.Role" class="form-control" hidden id="RolePicked" />
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="user">
+                            <h4>Registrandome como usuario.</h4>
+                        </div>
+                        <div class="tab-pane fade show" id="partner">
+                            <h4>Registrandome como Empresa.</h4>
+                        </div>
+                    </div>
+                    <hr />
                     <div class="form-group">
                         <label asp-for="Input.Names"></label>
                         <input asp-for="Input.Names" class="form-control" />
@@ -47,31 +41,39 @@
                         <input asp-for="Input.LastNames" class="form-control" />
                         <span asp-validation-for="Input.LastNames" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Input.DocumentId"></label>
-                        <input asp-for="Input.DocumentId" class="form-control" />
-                        <span asp-validation-for="Input.DocumentId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Input.PhoneNumber"></label>
-                        <input asp-for="Input.PhoneNumber" class="form-control" />
-                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Input.DocumentId"></label>
+                            <input asp-for="Input.DocumentId" class="form-control" />
+                            <span asp-validation-for="Input.DocumentId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Input.PhoneNumber"></label>
+                            <input asp-for="Input.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label asp-for="Input.Email"></label>
                         <input asp-for="Input.Email" class="form-control" />
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Input.Password"></label>
-                        <input asp-for="Input.Password" class="form-control" />
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Input.ConfirmPassword"></label>
-                        <input asp-for="Input.ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                    </div>
+
+                    <p>Al dar click en Registrarme está aceptando nuestro <a href="#">Términos de Servicio</a> y <a
+                            asp-area="" asp-controller="Home" asp-action="Privacy">Politicas de Privacidad</a>.</p>
+
                     <button type="submit" class="btn btn-primary">Registrarme</button>
                 </form>
             </div>
@@ -87,4 +89,12 @@
 </section>
 @section Scripts {
 <partial name="_ValidationScriptsPartial" />
+<script type="text/javascript">
+    $('.selectUser').on('click', function (e) {
+        $('input[name="Input.Role"]').val(false);
+    });
+    $('.selectPartner').on('click', function (e) {
+        $('input[name="Input.Role"]').val(true);
+    });
+</script>
 }

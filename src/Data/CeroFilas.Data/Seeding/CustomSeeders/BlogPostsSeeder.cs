@@ -23,28 +23,28 @@
                         Title = "Lorem Ipsum Dolor Sit Ement",
                         Content = @"Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.",
                         Author = "Elizabeth Scarcella",
-                        ImageUrl = GlobalConstants.Images.StressedSkin,
+                        ImageUrl = GlobalConstants.Images.DemoImg,
                     },
                     new BlogPost // Id = 2
                     {
                         Title = "Inventore et et dolor consequatur",
                         Content = @"Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.",
                         Author = "Michele McDonough",
-                        ImageUrl = GlobalConstants.Images.SummerBeautyTips,
+                        ImageUrl = GlobalConstants.Images.DemoImg,
                     },
                     new BlogPost // Id = 3
                     {
                         Title = "Sed deserunt et?",
                         Content = @"Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.",
                         Author = "Michele McDonough",
-                        ImageUrl = GlobalConstants.Images.MakeUp,
+                        ImageUrl = GlobalConstants.Images.DemoImg,
                     },
                     new BlogPost // Id = 4
                     {
                         Title = "Essentials for Healthy ",
                         Content = @"Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.",
                         Author = "Elizabeth Scarcella",
-                        ImageUrl = GlobalConstants.Images.SummerHealthyHair,
+                        ImageUrl = GlobalConstants.Images.DemoImg,
                     },
                 };
 

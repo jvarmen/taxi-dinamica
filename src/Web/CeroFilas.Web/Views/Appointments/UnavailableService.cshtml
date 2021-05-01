@@ -1,15 +1,13 @@
 ﻿@{
-    this.ViewData["Title"] = "Unavailable Partner/Service";
+    this.ViewData["Title"] = "Servicio no disponible";
 }
 
-<h3>Lo sentimos, no hay cupo para esta hora solicitada.</h3>
+<h3>Lo sentimos, el servicio solicitado no se encuentra disponible o no hay cupo.</h3>
 
 <div class="row">
     <div class="col-lg-4 ml-lg-5">
         <div class="button button-large button_1 elements_button mt-4">
-            <a asp-area="" asp-controller="Partners" asp-action="Index">
-                <span>Buscar en otro lado</span>
-            </a>
+            <a href="##" onClick="history.go(-1); return false;"> Escoger otra fecha</a> 
         </div>
     </div>
 </div>

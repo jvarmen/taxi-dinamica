@@ -2,6 +2,8 @@
 {
     using System;
     using System.Threading.Tasks;
+    using System.Text;
+    using System.Text.Encodings.Web;
 
     using CeroFilas.Data.Models;
     using CeroFilas.Services.Data.Appointments;
@@ -12,6 +14,7 @@
     using CeroFilas.Web.ViewModels.PartnerServices;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
 
     [Authorize]
@@ -22,19 +25,22 @@
         private readonly IPartnersService PartnersService;
         private readonly IAppointmentsService appointmentsService;
         private readonly IPartnerServicesService PartnerServicesService;
+        private readonly IEmailSender emailSender;
 
         public AppointmentsController(
             UserManager<ApplicationUser> userManager,
             IAppointmentsService appointmentsService,
             IPartnerServicesService PartnerServicesService,
             IDateTimeParserService dateTimeParserService,
-            IPartnersService PartnersService)
+            IPartnersService PartnersService,
+            IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.appointmentsService = appointmentsService;
             this.PartnerServicesService = PartnerServicesService;
             this.dateTimeParserService = dateTimeParserService;
             this.PartnersService = PartnersService;
+            this.emailSender = emailSender;
         }
 
         public async Task<IActionResult> Index()
@@ -88,6 +94,15 @@
             var userId = await this.userManager.GetUserIdAsync(user);
 
             await this.appointmentsService.AddAsync(userId, input.PartnerId, input.ServiceId, dateTime);
+
+            var callbackUrl = Url.Page("/Appoinments");
+
+            // Send Email 
+            var uemail = user?.Email;
+            await this.emailSender.SendEmailAsync(
+                uemail,
+                "Cita Agendada",
+                $"Haz agendado una cita exitosamente para el día {dateTime}, puedes ver los demás detalles haciendo <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>click aquí</a>.");
 
             return this.RedirectToAction("Index");
         }

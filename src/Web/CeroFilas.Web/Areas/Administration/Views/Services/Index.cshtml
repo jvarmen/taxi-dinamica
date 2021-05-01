@@ -1,25 +1,26 @@
 ﻿@model CeroFilas.Web.ViewModels.Services.ServicesListViewModel
 @using CeroFilas.Common
 @{
-    this.ViewData["Title"] = "Services";
+    this.ViewData["Title"] = "Servicios";
 }
 
 <h2>
-    All Services (@Model.Services.Count())
+    Todos los Servicios (@Model.Services.Count())
     <span>
-        <a class="btn btn-info" asp-area="Administration" asp-controller="Services" asp-action="AddService">Add New Service</a>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Services" asp-action="AddService">Añadir Nuevo
+            Servicio</a>
     </span>
 </h2>
 
 <table class="table table-bordered table-striped">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Description</th>
-            <th scope="col">Partners</th>
-            <th scope="col">Appointments</th>
-            <th scope="col">Delete Button</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Empresas</th>
+            <th scope="col">Citas</th>
+            <th scope="col">Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -32,21 +33,12 @@
                 <td>@service.PartnersCount</td>
                 <td>@service.AppointmentsCount</td>
                 <td>
-                    @if (service.Id <= GlobalConstants.SeededDataCounts.Services)
-                    {
-                        <div class="text-muted" style="font-size:smaller">
-                            Seeded Data <br />Cannot Be Deleted
-                        </div>
-                    }
-                    else
-                    {
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger btn-sm"
-                                    asp-area="Administration" asp-controller="Services" asp-action="DeleteService" asp-route-id="@service.Id">
-                                Delete
-                            </button>
-                        </form>
-                    }
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm" asp-area="Administration"
+                        asp-controller="Services" asp-action="DeleteService" asp-route-id="@service.Id">
+                            Borrar
+                        </button>
+                    </form>
                 </td>
             </tr>
         }

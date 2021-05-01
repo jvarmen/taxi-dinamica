@@ -51,7 +51,7 @@
             catch (System.Exception)
             {
                 // In case of missing Cloudinary configuration from appsettings.json
-                imageUrl = GlobalConstants.Images.CloudinaryMissing;
+                imageUrl = GlobalConstants.Images.DemoImg;
             }
 
             await this.blogPostsService.AddAsync(input.Title, input.Content, input.Author, imageUrl);

@@ -1,27 +1,31 @@
 ﻿@model CeroFilas.Web.ViewModels.Partners.PartnerWithServicesViewModel
 @{
-    this.ViewData["Title"] = "Partner Manager: " + Model.Name;
+    this.ViewData["Title"] = "Gestionar Empresa: " + Model.Name;
 }
 
 <div class="row row-eq-height">
     <!-- Info Box -->
-    <div class="col-lg-5 info_box_col">
-        <div class="info_box">
-            <div class="info_image"><img src="@Model.ImageUrl" alt=""></div>
-            <div class="info_content">
-                <div class="info_title">@Model.Name</div>
-                <div class="info_text">Serivicio: <strong>@Model.CategoryName</strong></div>
-                <div class="info_text">Address: <strong>@Model.Address</strong></div>
-            </div>
+    <div class="col-lg-5">
+        <div class="partner-details-slider swiper-container">
+            <img src="@Model.ImageUrl" alt="" class="img-fluid">
+        </div>
+        <br />
+        <div class="partner-info">
+            <h3>Información</h3>
+            <ul>
+                <li><strong>Tipo de Servicio</strong>: @Model.CategoryName</li>
+                <li><strong>Dirección</strong>: @Model.CityName, @Model.Address</li>
+                <li><strong>Sitio Web</strong>: <strong>@Model.Website</strong></li>
+            </ul>
         </div>
     </div>
     <!-- Panel -->
     <div class="col-lg-7">
-        <h1>Horas de servicio:</h1>
+        <h1>Servicios Ofrecidos:</h1>
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Horario</th>
+                    <th scope="col">Servicio</th>
                     <th scope="col">Disponibilidad</th>
                     <th scope="col">Opciones</th>
                 </tr>
@@ -34,11 +38,11 @@
                         <td>
                             @if (service.Available == true)
                             {
-                                <span style="font-family:Arial, FontAwesome" class="text-success">&#xf00c;</span>
+                                <span class="badge badge-success">Disponible</span>
                             }
                             else
                             {
-                                <span style="font-family:Arial, FontAwesome" class="text-danger">&#xf00d;</span>
+                                <span class="badge badge-danger">No Disponible</span>
                             }
                         </td>
                         <td>

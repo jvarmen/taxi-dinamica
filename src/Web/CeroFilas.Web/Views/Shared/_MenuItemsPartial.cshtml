@@ -14,12 +14,6 @@
     </ul>
 </li>
 <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index" asp-fragment="contact">Contacto</a></li>
+<li><a class="getstarted scrollto" asp-controller="Categories" asp-action="Index">Agendar Cita</a></li>
 
-@if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.PartnerManagerRoleName))
-{
-    <li><a class="getstarted scrollto" asp-controller="Appointments" asp-action="Index">Mis Citas</a></li>
-    <li><a class="getstarted scrollto" asp-area="Manager" asp-controller="Dashboard" asp-action="Index">Empresas</a></li>
-}else{
-    <li><a class="getstarted scrollto" asp-controller="Categories" asp-action="Index">Agendar Cita</a></li>
-}
 <partial name="_LoginPartial" />

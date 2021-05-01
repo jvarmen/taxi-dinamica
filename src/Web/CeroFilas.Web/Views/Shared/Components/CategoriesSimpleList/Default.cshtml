@@ -2,16 +2,16 @@
 @{
     this.ViewData["Title"] = "Default";
 }
-
-<div class="btn-group dropright ml-5">
-    <button type="button" style="color: #BA55D3" class="btn btn-outline-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Search by Category
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Buscar por Categoría
     </button>
-    <div class="dropdown-menu">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         @foreach (var category in Model.Categories)
         {
-            <a class="dropdown-item" 
-               asp-area="" asp-controller="Partners" asp-action="Index" asp-route-sortId="@category.Id">
+            <a class="dropdown-item" asp-area="" asp-controller="Partners" asp-action="Index"
+            asp-route-sortId="@category.Id">
                 @category.Name (@category.PartnersCount)
             </a>
         }

@@ -1,22 +1,23 @@
 ﻿@model CeroFilas.Web.ViewModels.Cities.CitiesListViewModel
 @using CeroFilas.Common
 @{
-    this.ViewData["Title"] = "Cities";
+    this.ViewData["Title"] = "Ciudades";
 }
 
 <h2>
-    All Cities (@Model.Cities.Count())
+    Todas las Ciudades (@Model.Cities.Count())
     <span>
-        <a class="btn btn-info" asp-area="Administration" asp-controller="Cities" asp-action="AddCity">Add New City</a>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Cities" asp-action="AddCity">Añadir Nueva
+            Ciudad</a>
     </span>
 </h2>
 
 <table class="table table-bordered table-striped">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Partner</th>
-            <th scope="col">Delete Button</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Empresas</th>
+            <th scope="col">Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -26,21 +27,12 @@
                 <th scope="row">@city.Name</th>
                 <td>@city.PartnersCount</td>
                 <td>
-                    @if (city.Id <= GlobalConstants.SeededDataCounts.Cities)
-                    {
-                        <div class="text-muted" style="font-size:smaller">
-                            Seeded Data <br />Cannot Be Deleted
-                        </div>
-                    }
-                    else
-                    {
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger btn-sm"
-                                    asp-area="Administration" asp-controller="Cities" asp-action="DeleteCity" asp-route-id="@city.Id">
-                                Borrar
-                            </button>
-                        </form>
-                    }
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm" asp-area="Administration"
+                        asp-controller="Cities" asp-action="DeleteCity" asp-route-id="@city.Id">
+                            Borrar
+                        </button>
+                    </form>
                 </td>
             </tr>
         }

@@ -60,7 +60,7 @@
 
             var partners = await this.partnersService
                 .GetAllWithSortingFilteringAndPagingAsync<PartnerViewModel>(
-                    searchString, sortId, pageSize, pageIndex);
+                    searchString, sortId,pageSize, pageIndex);
             var partnersList = partners.ToList();
 
             var count = await this.partnersService
