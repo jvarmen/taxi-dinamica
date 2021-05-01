@@ -38,7 +38,7 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null)
             {
-                return NotFound($"Unable to load user with email '{email}'.");
+                return NotFound($"No se pudo cargar al usuario con el correo electrónico '{email}'.");
             }
 
             Email = email;

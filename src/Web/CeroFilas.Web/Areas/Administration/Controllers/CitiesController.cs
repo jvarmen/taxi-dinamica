@@ -46,10 +46,6 @@
         [HttpPost]
         public async Task<IActionResult> DeleteCity(int id)
         {
-            if (id <= GlobalConstants.SeededDataCounts.Cities)
-            {
-                return this.RedirectToAction("Index");
-            }
 
             await this.citiesService.DeleteAsync(id);
 

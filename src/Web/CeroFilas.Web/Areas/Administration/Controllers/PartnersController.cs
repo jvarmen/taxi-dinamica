@@ -91,11 +91,6 @@
         [HttpPost]
         public async Task<IActionResult> DeletePartner(string id)
         {
-            if (id.StartsWith("seeded"))
-            {
-                return this.RedirectToAction("Index");
-            }
-
             await this.partnersService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");

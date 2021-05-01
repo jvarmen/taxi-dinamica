@@ -61,11 +61,6 @@
         [HttpPost]
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
-            if (id <= GlobalConstants.SeededDataCounts.BlogPosts)
-            {
-                return this.RedirectToAction("Index");
-            }
-
             await this.blogPostsService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");

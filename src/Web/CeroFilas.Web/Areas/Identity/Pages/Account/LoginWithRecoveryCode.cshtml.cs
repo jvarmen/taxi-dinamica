@@ -34,7 +34,7 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account
             [BindProperty]
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Recovery Code")]
+            [Display(Name = "Código de recuperación")]
             public string RecoveryCode { get; set; }
         }
 
@@ -44,7 +44,7 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"No se puede cargar el usuario de autenticación de dos factores.");
             }
 
             ReturnUrl = returnUrl;
@@ -62,7 +62,7 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"No se puede cargar el usuario de autenticación de dos factores.");
             }
 
             var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);

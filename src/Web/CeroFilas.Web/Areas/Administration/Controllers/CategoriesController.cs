@@ -50,10 +50,6 @@
         [HttpPost]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            if (id <= GlobalConstants.SeededDataCounts.Categories)
-            {
-                return this.RedirectToAction("Index");
-            }
 
             await this.categoriesService.DeleteAsync(id);
 
