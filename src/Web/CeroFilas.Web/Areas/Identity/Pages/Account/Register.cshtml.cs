@@ -93,7 +93,7 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/Appoinments");
+            returnUrl = returnUrl ?? Url.Content("~/Appointments");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
