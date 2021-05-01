@@ -7,7 +7,8 @@
 <h2>
     Todas las Categorias (@Model.Categories.Count())
     <span>
-        <a class="btn btn-info" asp-area="Administration" asp-controller="Categories" asp-action="AddCategory">Añadir Nueva Categoria</a>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Categories" asp-action="AddCategory">Añadir
+            Nueva Categoria</a>
     </span>
 </h2>
 
@@ -30,21 +31,12 @@
                 <td>@category.ServicesCount</td>
                 <td>@category.PartnersCount</td>
                 <td>
-                    @if (category.Id <= GlobalConstants.SeededDataCounts.Categories)
-                    {
-                        <div class="text-muted" style="font-size:smaller">
-                            Información anclada <br />No se puede borrar
-                        </div>
-                    }
-                    else
-                    {
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger btn-sm"
-                                    asp-area="Administration" asp-controller="Categories" asp-action="DeleteCategory" asp-route-id="@category.Id">
-                                Borrar
-                            </button>
-                        </form>
-                    }
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm" asp-area="Administration"
+                        asp-controller="Categories" asp-action="DeleteCategory" asp-route-id="@category.Id">
+                            Borrar
+                        </button>
+                    </form>
                 </td>
             </tr>
         }
