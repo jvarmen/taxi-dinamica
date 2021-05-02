@@ -34,7 +34,7 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Número de teléfono")]
             public string PhoneNumber { get; set; }
         }
 
@@ -89,7 +89,7 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Tu perfil ha sido actualizado";
             return RedirectToPage();
         }
     }

@@ -46,7 +46,6 @@
         [HttpPost]
         public async Task<IActionResult> DeleteCity(int id)
         {
-
             await this.citiesService.DeleteAsync(id);
 
             return this.RedirectToAction("Index");

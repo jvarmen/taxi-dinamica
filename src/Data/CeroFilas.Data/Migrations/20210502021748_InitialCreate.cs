@@ -254,6 +254,8 @@ namespace CeroFilas.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 40, nullable: false),
                     ImageUrl = table.Column<string>(nullable: false),
+                    DIANUrl = table.Column<string>(nullable: true),
+                    Schedule = table.Column<string>(nullable: true),
                     OwnerId = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: false),
                     CityId = table.Column<int>(nullable: false),

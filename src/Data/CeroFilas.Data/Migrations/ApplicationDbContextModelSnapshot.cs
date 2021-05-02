@@ -329,6 +329,9 @@ namespace CeroFilas.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DIANUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
@@ -355,6 +358,9 @@ namespace CeroFilas.Data.Migrations
 
                     b.Property<double>("Rating")
                         .HasColumnType("float");
+
+                    b.Property<string>("Schedule")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");

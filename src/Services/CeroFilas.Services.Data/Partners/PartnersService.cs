@@ -29,6 +29,18 @@
             return partners;
         }
 
+        public async Task<IEnumerable<T>> GetAllByOwnerAsync<T>(string ownerId)
+        {
+            var partners =
+                await this.partnersRepository
+                .All()
+                .Where(x => x.OwnerId == ownerId)
+                .OrderBy(x => x.Name)
+                .To<T>().ToListAsync();
+            return partners;
+        }
+        
+
         public async Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
             string searchString,
             int? sortId,
@@ -103,7 +115,7 @@
             return partner;
         }
 
-        public async Task<string> AddAsync(string name, int categoryId, int cityId, string address, string website, string imageUrl)
+        public async Task<string> AddAsync(string name, int categoryId, int cityId, string address, string website, string imageUrl, string ownerId)
         {
             var partner = new Partner
             {
@@ -114,6 +126,7 @@
                 Address = address,
                 Website = website,
                 ImageUrl = imageUrl,
+                OwnerId = ownerId,
                 Rating = 0,
                 RatersCount = 0,
             };

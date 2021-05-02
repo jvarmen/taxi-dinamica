@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CeroFilas.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210430031604_InitialCreate")]
+    [Migration("20210502021748_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -331,6 +331,9 @@ namespace CeroFilas.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DIANUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
@@ -357,6 +360,9 @@ namespace CeroFilas.Data.Migrations
 
                     b.Property<double>("Rating")
                         .HasColumnType("float");
+
+                    b.Property<string>("Schedule")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");

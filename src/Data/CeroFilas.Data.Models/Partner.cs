@@ -21,6 +21,10 @@
         [Required]
         public string ImageUrl { get; set; }
 
+        public string DIANUrl { get; set; }
+
+        public string Schedule { get; set; }
+
         public string OwnerId { get; set; }
 
         public virtual ApplicationUser Owner { get; set; }

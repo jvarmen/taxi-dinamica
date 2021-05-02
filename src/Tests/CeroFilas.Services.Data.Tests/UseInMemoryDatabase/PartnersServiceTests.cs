@@ -96,8 +96,9 @@
             var address = new NLipsum.Core.Sentence().ToString();
             var website = new NLipsum.Core.Word().ToString();
             var imageUrl = new NLipsum.Core.Word().ToString();
+            var ownerId = Guid.NewGuid().ToString();
 
-            await this.Service.AddAsync(name, categoryId, cityId, address, website, imageUrl);
+            await this.Service.AddAsync(name, categoryId, cityId, address, website, imageUrl, ownerId);
 
             var PartnersCount = await this.DbContext.Partners.CountAsync();
             Assert.Equal(2, PartnersCount);

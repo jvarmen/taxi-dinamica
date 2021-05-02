@@ -79,7 +79,7 @@
             }
 
             // Add Partner
-            var partnerId = await this.partnersService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Website, imageUrl);
+            var partnerId = await this.partnersService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Website, imageUrl, "admin");
 
             // Add to the Partner all Services from its Category
             var servicesIds = await this.servicesService.GetAllIdsByCategoryAsync(input.CategoryId);

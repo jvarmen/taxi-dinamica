@@ -1,8 +1,12 @@
 ﻿namespace CeroFilas.Web.Areas.Manager.Controllers
 {
+    using System;
     using System.Threading.Tasks;
+    using System.Text;
+    using System.Text.Encodings.Web;
 
     using CeroFilas.Common;
+    using CeroFilas.Data.Models;
     using CeroFilas.Services.Cloudinary;
     using CeroFilas.Services.Data.Categories;
     using CeroFilas.Services.Data.Cities;
@@ -12,21 +16,29 @@
     using CeroFilas.Services.Data.Services;
     using CeroFilas.Web.ViewModels.Common.SelectLists;
     using CeroFilas.Web.ViewModels.Partners;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.Extensions.Logging;
 
+    [Authorize]
     public class PartnersController : ManagerBaseController
     {
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly IPartnersService PartnersService;
         private readonly ICategoriesService categoriesService;
         private readonly ICitiesService citiesService;
         private readonly IServicesService servicesService;
-
         private readonly IPartnerServicesService PartnerServicesService;
         private readonly IAppointmentsService appointmentsService;
         private readonly ICloudinaryService cloudinaryService;
+        private readonly ILogger<PartnersController> logger;
 
         public PartnersController(
+            ILogger<PartnersController> logger,
+            UserManager<ApplicationUser> userManager,
             IPartnersService PartnersService,
             ICategoriesService categoriesService,
             ICitiesService citiesService,
@@ -35,6 +47,7 @@
             ICloudinaryService cloudinaryService,
             IAppointmentsService appointmentsService)
         {
+            this.userManager = userManager;
             this.PartnersService = PartnersService;
             this.categoriesService = categoriesService;
             this.PartnerServicesService = PartnerServicesService;
@@ -42,16 +55,22 @@
             this.citiesService = citiesService;
             this.servicesService = servicesService;
             this.cloudinaryService = cloudinaryService;
+            this.logger = logger;
         }
 
         public async Task<IActionResult> Details(string id)
         {
+            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+            var userId = await this.userManager.GetUserIdAsync(user);
+
             var viewModel = await this.PartnersService.GetByIdAsync<PartnerWithServicesViewModel>(id);
 
             if (viewModel == null)
             {
                 return new StatusCodeResult(404);
             }
+
+            this.logger.LogInformation("Editando empresa"+viewModel.ToString()+".");
 
             return this.View(viewModel);
         }
@@ -85,8 +104,11 @@
                 imageUrl = GlobalConstants.Images.DemoImg;
             }
 
+            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+            var userId = await this.userManager.GetUserIdAsync(user);
+            
             // Add Partner
-            var partnerId = await this.PartnersService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Website, imageUrl);
+            var partnerId = await this.PartnersService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Website, imageUrl, userId);
 
             // Add to the Partner all Services from its Category
             var servicesIds = await this.servicesService.GetAllIdsByCategoryAsync(input.CategoryId);

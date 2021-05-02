@@ -7,6 +7,8 @@
     {
         Task<IEnumerable<T>> GetAllAsync<T>();
 
+        Task<IEnumerable<T>> GetAllByOwnerAsync<T>(string ownerId);
+
         Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
             string searchString,
             int? sortId,
@@ -19,7 +21,7 @@
 
         Task<T> GetByIdAsync<T>(string id);
 
-        Task<string> AddAsync(string name, int categoryId, int cityId, string address, string website, string imageUrl);
+        Task<string> AddAsync(string name, int categoryId, int cityId, string address, string website, string imageUrl, string ownerId);
 
         Task DeleteAsync(string id);
 
