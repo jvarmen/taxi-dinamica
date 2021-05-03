@@ -64,13 +64,11 @@
             var userId = await this.userManager.GetUserIdAsync(user);
 
             var viewModel = await this.PartnersService.GetByIdAsync<PartnerWithServicesViewModel>(id);
-
+            
             if (viewModel == null)
             {
                 return new StatusCodeResult(404);
             }
-
-            this.logger.LogInformation("Editando empresa"+viewModel.ToString()+".");
 
             return this.View(viewModel);
         }

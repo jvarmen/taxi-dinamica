@@ -122,7 +122,9 @@ namespace CeroFilas.Web.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = user.Id, code = code },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirmar tu correo",
+                    await _emailSender.SendEmailAsync(
+                        Input.Email, 
+                        "Confirmar tu correo",
                         $"Porfavor confirma tu cuenta dando <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>click aquí</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)

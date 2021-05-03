@@ -13,7 +13,7 @@
 
         public string ImageUrl { get; set; }
         
-        public int OwnerId { get; set; }
+        public string OwnerId { get; set; }
 
         public string CategoryName { get; set; }
 

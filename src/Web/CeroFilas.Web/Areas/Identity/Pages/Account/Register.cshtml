@@ -10,27 +10,27 @@
         <div class="col-lg-6">
             <h3>Crea una nueva cuenta</h3>
             <br>
+            <ul class="nav nav-tabs mb-3" data-tabs="tabs">
+                <li>
+                    <a class="nav-link active selectUser" data-toggle="tab" href="#user">Usuario</a>
+                </li>
+                <li>
+                    <a class="nav-link selectPartner" data-toggle="tab" href="#partner">Empresa</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="user">
+                    <h4>Registrandome como usuario.</h4>
+                </div>
+                <div class="tab-pane fade show" id="partner">
+                    <h4>Registrandome como Empresa.</h4>
+                </div>
+            </div>
+            <hr />
             <div class="my-2">
                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                     <div asp-validation-summary="All" class="text-danger"></div>
-                    <ul class="nav nav-pills mb-3">
-                        <li>
-                            <a class="nav-link active selectUser" data-bs-toggle="pill" href="#user">Usuario</a>
-                        </li>
-                        <li>
-                            <a class="nav-link selectPartner" data-bs-toggle="pill" href="#partner">Empresa</a>
-                        </li>
-                        <input asp-for="Input.Role" class="form-control" hidden id="RolePicked" />
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="user">
-                            <h4>Registrandome como usuario.</h4>
-                        </div>
-                        <div class="tab-pane fade show" id="partner">
-                            <h4>Registrandome como Empresa.</h4>
-                        </div>
-                    </div>
-                    <hr />
+                    <input asp-for="Input.Role" class="form-control" hidden id="RolePicked" />
                     <div class="form-group">
                         <label asp-for="Input.Names"></label>
                         <input asp-for="Input.Names" class="form-control" />
@@ -88,7 +88,6 @@
     </div><!-- End register Tabs -->
 </section>
 @section Scripts {
-<partial name="_ValidationScriptsPartial" />
 <script type="text/javascript">
     $('.selectUser').on('click', function (e) {
         $('input[name="Input.Role"]').val(false);

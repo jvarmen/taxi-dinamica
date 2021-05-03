@@ -5,13 +5,11 @@
 
 <h3>Bienvenido al Panel de Gestión de Empresas!</h3>
 <p>Aquí están las empresas que administras:</p>
-<br />
-<br />
-<span class="my-4">
+<div class="my-2">
     <a class="btn btn-info" asp-area="Manager" asp-controller="Partners" asp-action="AddPartner">Añadir Nueva
         Empresa</a>
-</span>
-
+</div>
+<br/>
 @if (@Model.Partners.Count() == 0)
 {
     <div>
