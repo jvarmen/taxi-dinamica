@@ -1,0 +1,24 @@
+﻿@model TaxiDinamica.Web.ViewModels.Categories.CategoriesListViewModel
+
+@{
+    this.ViewData["Title"] = "Categorias de Servicios";
+    var cardColors = new List<string> { "blue", "orange", "green", "red", "purple", "pink" };
+    Random RD = new Random();
+}
+<header class="section-header">
+    <h2 style="font-size: 2rem">¿Que tipo de servicio deseas?</h2>
+</header>
+<div class="row gy-4 services " style="row-gap: 20px;">
+    @foreach (var category in Model.Categories)
+    {
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-box @(cardColors[RD.Next(0,5)])">
+                <i class="ri-discuss-line icon"></i>
+                <h3>@category.Name</h3>
+                <p>@category.Description</p>
+                <a asp-area="" asp-controller="Partners" asp-action="Index" asp-route-sortId="@category.Id"
+                class="read-more"><span>Ver Empresas</span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    }
+</div>

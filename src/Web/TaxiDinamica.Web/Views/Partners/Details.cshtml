@@ -1,0 +1,44 @@
+﻿@model TaxiDinamica.Web.ViewModels.Partners.PartnerWithServicesViewModel
+@{
+    this.ViewData["Title"] = "Partner: " + Model.Name;
+    this.ViewData["cClass"] = "partner-details";
+}
+<div class="row gy-4">
+
+    <div class="col-lg-4">
+        <div class="partner-details-slider swiper-container">
+            <img src="@Model.ImageUrl" alt="" class="img-fluid">
+        </div>
+        <br />
+        <div class="partner-info">
+            <h3>Información</h3>
+            <ul>
+                <li><strong>Tipo de Servicio</strong>: @Model.CategoryName</li>
+                <li><strong>Dirección</strong>: @Model.CityName, @Model.Address</li>
+                <li><strong>Sitio Web</strong>: <strong>@Model.Website</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="partner-description features">
+            <div class="col-md-12">
+                <h2>Servicios Disponibles</h2>
+                <p>Selecciona el servicio que necesitas</p>
+            </div>
+            @foreach (var service in Model.Services.Where(x => x.Available == true))
+            {
+                <div class="col-md-12" data-aos="zoom-out" data-aos-delay="200">
+                    <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment"
+                    asp-route-PartnerId="@service.PartnerId" asp-route-serviceId="@service.ServiceId">
+                        <div class="feature-box d-flex align-items-center">
+                            <i class="bi bi-check"></i>
+                            <h3>@service.ServiceName</h3>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

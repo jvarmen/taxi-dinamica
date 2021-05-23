@@ -1,0 +1,40 @@
+﻿@model TaxiDinamica.Web.ViewModels.Cities.CitiesListViewModel
+@using TaxiDinamica.Common
+@{
+    this.ViewData["Title"] = "Ciudades";
+}
+
+<h2>
+    Todas las Ciudades (@Model.Cities.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Administration" asp-controller="Cities" asp-action="AddCity">Añadir Nueva
+            Ciudad</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Empresas</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var city in this.Model.Cities)
+        {
+            <tr>
+                <th scope="row">@city.Name</th>
+                <td>@city.PartnersCount</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm" asp-area="Administration"
+                        asp-controller="Cities" asp-action="DeleteCity" asp-route-id="@city.Id">
+                            Borrar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
