@@ -37,6 +37,7 @@
             {
                 Partners = await this.partnersService.GetAllByOwnerAsync<PartnerViewModel>(userId),
             };
+            
             return this.View(viewModel);
         }
     }
