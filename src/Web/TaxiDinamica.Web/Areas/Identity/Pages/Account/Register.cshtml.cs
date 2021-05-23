@@ -45,6 +45,69 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
+        public async Task OnGetAsync(string returnUrl = null)
+        {
+            this.ReturnUrl = returnUrl;
+            this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        }
+
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        {
+            returnUrl = returnUrl ?? this.Url.Content("~/Appointments");
+            this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (this.ModelState.IsValid)
+            {
+                var user = new ApplicationUser 
+                { 
+                    Names = this.Input.Names, 
+                    LastNames = this.Input.LastNames, 
+                    DocumentId = this.Input.DocumentId, 
+                    PhoneNumber = this.Input.PhoneNumber,
+                    UserName = this.Input.Email, 
+                    Email = this.Input.Email,
+                };
+                var result = await this.userManager.CreateAsync(user, this.Input.Password);
+                if (result.Succeeded)
+                {
+                    if(this.Input.Role)
+                    {
+                        returnUrl = this.Url.Content("~/Manager/Partners/AddPartner");
+                        await this.userManager.AddToRoleAsync(user, GlobalConstants.PartnerManagerRoleName);
+                    }
+                    this.logger.LogInformation("User created a new account with password.");
+
+                    var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = this.Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { area = "Identity", userId = user.Id, code = code },
+                        protocol: this.Request.Scheme);
+
+                    await this.emailSender.SendEmailAsync(
+                        this.Input.Email, 
+                        "Confirmar tu correo",
+                        $"Porfavor confirma tu cuenta dando <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>click aquí</a>.");
+
+                    if (this.userManager.Options.SignIn.RequireConfirmedAccount)
+                    {
+                        return this.RedirectToPage("RegisterConfirmation", new { email = this.Input.Email });
+                    }
+                    else
+                    {
+                        await this.signInManager.SignInAsync(user, isPersistent: false);
+                        return this.LocalRedirect(returnUrl);
+                    }
+                }
+                foreach (var error in result.Errors)
+                {
+                    this.ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+            // If we got this far, something failed, redisplay form
+            return this.Page();
+        }
+
         public class InputModel
         {
             public bool Role { get; set; }
@@ -83,69 +146,6 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             [Display(Name = "Repetir contraseña")]
             [Compare("Password", ErrorMessage = "La contraseña y su confirmación no coinciden.")]
             public string ConfirmPassword { get; set; }
-        }
-
-        public async Task OnGetAsync(string returnUrl = null)
-        {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        }
-
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
-        {
-            returnUrl = returnUrl ?? Url.Content("~/Appointments");
-            ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser 
-                { 
-                    Names = Input.Names, 
-                    LastNames = Input.LastNames, 
-                    DocumentId = Input.DocumentId, 
-                    PhoneNumber = Input.PhoneNumber,
-                    UserName = Input.Email, 
-                    Email = Input.Email,
-                };
-                var result = await this.userManager.CreateAsync(user, Input.Password);
-                if (result.Succeeded)
-                {
-                    if(Input.Role)
-                    {
-                        returnUrl = Url.Content("~/Manager/Partners/AddPartner");
-                        await this.userManager.AddToRoleAsync(user, GlobalConstants.PartnerManagerRoleName);
-                    }
-                    this.logger.LogInformation("User created a new account with password.");
-
-                    var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code },
-                        protocol: Request.Scheme);
-
-                    await this.emailSender.SendEmailAsync(
-                        Input.Email, 
-                        "Confirmar tu correo",
-                        $"Porfavor confirma tu cuenta dando <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>click aquí</a>.");
-
-                    if (this.userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
-                    }
-                    else
-                    {
-                        await this.signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-            }
-            // If we got this far, something failed, redisplay form
-            return Page();
         }
     }
 }

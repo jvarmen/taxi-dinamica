@@ -33,11 +33,11 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             this.logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {
-                return LocalRedirect(returnUrl);
+                return this.LocalRedirect(returnUrl);
             }
             else
             {
-                return RedirectToPage();
+                return this.RedirectToPage();
             }
         }
     }

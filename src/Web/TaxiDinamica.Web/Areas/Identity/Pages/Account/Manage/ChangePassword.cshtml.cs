@@ -32,6 +32,53 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account.Manage
         [TempData]
         public string StatusMessage { get; set; }
 
+        public async Task<IActionResult> OnGetAsync()
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+            if (user == null)
+            {
+                return this.NotFound($"No se puede cargar el usuario con ID '{this.userManager.GetUserId(this.User)}'.");
+            }
+
+            var hasPassword = await this.userManager.HasPasswordAsync(user);
+            if (!hasPassword)
+            {
+                return this.RedirectToPage("./SetPassword");
+            }
+
+            return this.Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.Page();
+            }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+            if (user == null)
+            {
+                return this.NotFound($"No se puede cargar el usuario con ID '{this.userManager.GetUserId(this.User)}'.");
+            }
+
+            var changePasswordResult = await this.userManager.ChangePasswordAsync(user, this.Input.OldPassword, this.Input.NewPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                foreach (var error in changePasswordResult.Errors)
+                {
+                    this.ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return this.Page();
+            }
+
+            await this.signInManager.RefreshSignInAsync(user);
+            this.logger.LogInformation("User changed their password successfully.");
+            this.StatusMessage = "Tu contraseña ha sido cambiada.";
+
+            return this.RedirectToPage();
+        }
+
         public class InputModel
         {
             [Required]
@@ -49,53 +96,6 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Confirmar nueva contraseña")]
             [Compare("NewPassword", ErrorMessage = "La nueva contraseña y la contraseña de confirmación no coinciden. ")]
             public string ConfirmPassword { get; set; }
-        }
-
-        public async Task<IActionResult> OnGetAsync()
-        {
-            var user = await this.userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"No se puede cargar el usuario con ID '{this.userManager.GetUserId(User)}'.");
-            }
-
-            var hasPassword = await this.userManager.HasPasswordAsync(user);
-            if (!hasPassword)
-            {
-                return RedirectToPage("./SetPassword");
-            }
-
-            return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            var user = await this.userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound($"No se puede cargar el usuario con ID '{this.userManager.GetUserId(User)}'.");
-            }
-
-            var changePasswordResult = await this.userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
-            if (!changePasswordResult.Succeeded)
-            {
-                foreach (var error in changePasswordResult.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                return Page();
-            }
-
-            await this.signInManager.RefreshSignInAsync(user);
-            this.logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Tu contraseña ha sido cambiada.";
-
-            return RedirectToPage();
         }
     }
 }

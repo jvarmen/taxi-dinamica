@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using TaxiDinamica.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -31,21 +31,21 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
         {
             if (userId == null || email == null || code == null)
             {
-                return RedirectToPage("/Index");
+                return this.RedirectToPage("/Index");
             }
 
             var user = await this.userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound($"No se puede cargar el usuario con ID '{userId}'.");
+                return this.NotFound($"No se puede cargar el usuario con ID '{userId}'.");
             }
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await this.userManager.ChangeEmailAsync(user, email, code);
             if (!result.Succeeded)
             {
-                StatusMessage = "Error al cambiar el correo electrónico.";
-                return Page();
+                this.StatusMessage = "Error al cambiar el correo electrónico.";
+                return this.Page();
             }
 
             // In our UI email and user name are one and the same, so when we update the email
@@ -53,13 +53,13 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             var setUserNameResult = await this.userManager.SetUserNameAsync(user, email);
             if (!setUserNameResult.Succeeded)
             {
-                StatusMessage = "Error cambio el nombre de usuario.";
-                return Page();
+                this.StatusMessage = "Error cambio el nombre de usuario.";
+                return this.Page();
             }
 
             await this.signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Gracias por confirmar tu cambio de correo.";
-            return Page();
+            this.StatusMessage = "Gracias por confirmar tu cambio de correo.";
+            return this.Page();
         }
     }
 }

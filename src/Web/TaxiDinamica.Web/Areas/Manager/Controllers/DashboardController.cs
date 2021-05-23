@@ -1,14 +1,14 @@
 ﻿namespace TaxiDinamica.Web.Areas.Manager.Controllers
 {
     using System;
-    using System.Threading.Tasks;
     using System.Text;
     using System.Text.Encodings.Web;
+    using System.Threading.Tasks;
 
     using TaxiDinamica.Data.Models;
     using TaxiDinamica.Services.Data.Partners;
-    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Web.ViewModels.Partners;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
@@ -18,14 +18,14 @@
     public class DashboardController : ManagerBaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IPartnersService PartnersService;
+        private readonly IPartnersService partnersService;
 
         public DashboardController(
             UserManager<ApplicationUser> userManager,
-            IPartnersService PartnersService)
+            IPartnersService partnersService)
         {
             this.userManager = userManager;
-            this.PartnersService = PartnersService;
+            this.partnersService = partnersService;
         }
 
         public async Task<IActionResult> Index()
@@ -35,7 +35,7 @@
 
             var viewModel = new PartnersListViewModel
             {
-                Partners = await this.PartnersService.GetAllByOwnerAsync<PartnerViewModel>(userId),
+                Partners = await this.partnersService.GetAllByOwnerAsync<PartnerViewModel>(userId),
             };
             return this.View(viewModel);
         }

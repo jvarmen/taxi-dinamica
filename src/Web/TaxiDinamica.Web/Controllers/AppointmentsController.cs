@@ -22,24 +22,24 @@
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IDateTimeParserService dateTimeParserService;
-        private readonly IPartnersService PartnersService;
+        private readonly IPartnersService partnersService;
         private readonly IAppointmentsService appointmentsService;
-        private readonly IPartnerServicesService PartnerServicesService;
+        private readonly IPartnerServicesService partnerServicesService;
         private readonly IEmailSender emailSender;
 
         public AppointmentsController(
             UserManager<ApplicationUser> userManager,
             IAppointmentsService appointmentsService,
-            IPartnerServicesService PartnerServicesService,
+            IPartnerServicesService partnerServicesService,
             IDateTimeParserService dateTimeParserService,
-            IPartnersService PartnersService,
+            IPartnersService partnersService,
             IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.appointmentsService = appointmentsService;
-            this.PartnerServicesService = PartnerServicesService;
+            this.partnerServicesService = partnerServicesService;
             this.dateTimeParserService = dateTimeParserService;
-            this.PartnersService = PartnersService;
+            this.partnersService = partnersService;
             this.emailSender = emailSender;
         }
 
@@ -56,17 +56,17 @@
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> MakeAnAppointment(string PartnerId, int serviceId)
+        public async Task<IActionResult> MakeAnAppointment(string partnerId, int serviceId)
         {
-            var PartnerService = await this.PartnerServicesService.GetByIdAsync<PartnerServiceSimpleViewModel>(PartnerId, serviceId);
-            if (PartnerService == null || !PartnerService.Available)
+            var partnerService = await this.partnerServicesService.GetByIdAsync<PartnerServiceSimpleViewModel>(partnerId, serviceId);
+            if (partnerService == null || !partnerService.Available)
             {
                 return this.View("UnavailableService");
             }
 
             var viewModel = new AppointmentInputModel
             {
-                PartnerId = PartnerId,
+                PartnerId = partnerId,
                 ServiceId = serviceId,
             };
             return this.View(viewModel);
@@ -95,7 +95,7 @@
 
             await this.appointmentsService.AddAsync(userId, input.PartnerId, input.ServiceId, dateTime);
 
-            var callbackUrl = Url.Page("/Appoinments");
+            var callbackUrl = this.Url.Page("/Appoinments");
 
             // Send Email 
             var uemail = user?.Email;

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using TaxiDinamica.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -29,19 +29,19 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
         {
             if (userId == null || code == null)
             {
-                return RedirectToPage("/Index");
+                return this.RedirectToPage("/Index");
             }
 
             var user = await this.userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound($"Error al carga el usuario con ID '{userId}'.");
+                return this.NotFound($"Error al carga el usuario con ID '{userId}'.");
             }
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await this.userManager.ConfirmEmailAsync(user, code);
-            StatusMessage = result.Succeeded ? "Gracias por confirmar tu correo." : "Error confirmando tu correo.";
-            return Page();
+            this.StatusMessage = result.Succeeded ? "Gracias por confirmar tu correo." : "Error confirmando tu correo.";
+            return this.Page();
         }
     }
 }
