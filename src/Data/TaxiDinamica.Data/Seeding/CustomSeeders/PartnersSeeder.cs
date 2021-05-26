@@ -18,90 +18,90 @@
 
             var partners = new Partner[]
             {
-                    // 1. Phone Partners
+                    // 1.
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "AFR231",
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
+                        Placa = "MFR231",
                         CategoryId = 1,
                         CityId = 1,
-                        DriverName = "Laidlaw Close",
-                        DriverContact = "3188401247",
+                        DriverName = "Francisco Herrera",
+                        DriverContact = "313353 6753",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
                         Placa = "EWO123",
                         CategoryId = 1,
                         CityId = 1,
-                        DriverName = "Francis Wayne",
-                        DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        DriverName = "Aureliano Ferrer",
+                        DriverContact = "350 499 5005",
+                        ImageUrl = GlobalConstants.Images.Taxi2,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
                         Placa = "SDF231",
                         CategoryId = 1,
                         CityId = 1,
-                        DriverName = "Rosehill Crescent",
-                        DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        DriverName = "Carmelo Benítez",
+                        DriverContact = "350 514 9077",
+                        ImageUrl = GlobalConstants.Images.Taxi3,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
 
-                    // 2. Escaner Partners
+                    // 2.
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
                         Placa = "WFG232",
                         CategoryId = 2,
                         CityId = 1,
-                        DriverName = "Pintail Moreno",
+                        DriverName = "Mateo Navarro",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi4,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "ASD231",
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
+                        Placa = "ZSD231",
                         CategoryId = 2,
                         CityId = 1,
-                        DriverName = "Ellesmere Gardens",
+                        DriverName = "Kamora Madden",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi3,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "ASD234",
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
+                        Placa = "XSD234",
                         CategoryId = 2,
                         CityId = 1,
-                        DriverName = "Sykes Avenue",
+                        DriverName = "Macario Lorenzo",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi2,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
 
-                    // 3. Dev Partners
+                    // 3. 
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "ADF534",
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
+                        Placa = "XDF534",
                         CategoryId = 3,
                         CityId = 1,
-                        DriverName = "Swinton Road",
+                        DriverName = "Eduvigis Campos",
                         DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
@@ -109,105 +109,66 @@
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "ASD231",
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
+                        Placa = "USD231",
                         CategoryId = 3,
                         CityId = 1,
-                        DriverName = "Sunnydale Benito",
+                        DriverName = "Edgar Marín",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi2,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
                         Placa = "SWF687",
                         CategoryId = 3,
                         CityId = 1,
-                        DriverName = "Penny Roadhes",
+                        DriverName = "Virgilio Cortés",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi3,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
 
-                    // 4. TV Partners
+                    // 4. 
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
                         Placa = "YUI098",
                         CategoryId = 4,
                         CityId = 1,
-                        DriverName = "Greenview Driver",
+                        DriverName = "Marcelino Montoro",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi4,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
                         Placa = "CBN456",
                         CategoryId = 4,
                         CityId = 1,
-                        DriverName = "Stratford Crescent",
+                        DriverName = "Marques Gonzalez",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi3,
                         Rating = 0.0,
                         RatersCount = 0,
                     },
                     new Partner
                     {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "YUO487",
+                        Id = "amarillo" + Guid.NewGuid().ToString(),
+                        Placa = "LUO487",
                         CategoryId = 4,
                         CityId = 1,
-                        DriverName = "Malet Cloban",
+                        DriverName = "Pascual Gutiérrez",
                         DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
+                        ImageUrl = GlobalConstants.Images.Taxi2,
                         Rating = 0.0,
                         RatersCount = 0,
-                    },
-
-                    // 5. Tablets Partners
-                    new Partner
-                    {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "JKL756",
-                        CategoryId = 5,
-                        CityId = 1,
-                        DriverName = "Abbotsbury Warner",
-                        DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
-                        Rating = 0.0,
-                        RatersCount = 0,
-                    },
-                    new Partner
-                    {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "UIP453",
-                        CategoryId = 5,
-                        CityId = 1,
-                        DriverName = "Abbotsbury Lulu",
-                        DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
-                        Rating = 0.0,
-                        RatersCount = 0,
-                    },
-                    new Partner
-                    {
-                        Id = "seeded" + Guid.NewGuid().ToString(),
-                        Placa = "BNM564",
-                        CategoryId = 5,
-                        CityId = 1,
-                        DriverName = "Anibal Cortes",
-                        DriverContact = "3188401247",
-                        ImageUrl = GlobalConstants.Images.DemoImg,
-                        Rating = 0.0,
-                        RatersCount = 0,
-                    },
-
+                    }
                 };
 
             await dbContext.AddRangeAsync(partners);

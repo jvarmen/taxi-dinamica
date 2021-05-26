@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c4d41f3c-53de-4701-8d42-739bf0ac8a6c/resourceGroups/appsvc_windows_centralus_basic/providers/Microsoft.Web/sites/taxi-dinamica",
+    "appService.deploySubpath": "publish"
+}

@@ -20,29 +20,24 @@
                 {
                     new Category // Id = 1
                     {
-                        Name = "Celulares",
-                        Description = "De todas las marcas"
+                        Name = "Transporte",
+                        Description = "Servicio de transporte público."
                     },
                     new Category // Id = 2
                     {
-                        Name = "Impresoras 3D",
-                        Description = "Diseño e impresión de modelos tridimensionales"
+                        Name = "Transporte con maletera",
+                        Description = "Transporte de pasajeros con equipamento."
                     },
                     new Category // Id = 3
                     {
-                        Name = "Asesoría",
-                        Description = "Consultas sobre la industria"
+                        Name = "Encomiendas locales",
+                        Description = "Envía y recibe encargos locales."
                     },
                     new Category // Id = 4
                     {
-                        Name = "Televisores",
-                        Description = "Reparación y venta de pantallas"
-                    },
-                    new Category // Id = 5
-                    {
-                        Name = "Tablets",
-                        Description = "Reparación y venta de tablets"
-                    },
+                        Name = "Expreso",
+                        Description = "Transporte Intermunicipal."
+                    }
                 };
 
             // Need them in particular order

@@ -9,78 +9,78 @@
     <h2>Nuevo Taxi</h2>
     <form method="post" enctype="multipart/form-data" class="pt-4">
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Placa del Taxi</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">Placa del Taxi</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="text" asp-for="@Model.Placa" class="form-control" required="required">
                 <span asp-validation-for="Placa" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.Image)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.Image)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.Image" class="form-control-file image-upload" required="required" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.PaseUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.PaseUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.PaseUrl" class="form-control-file" required="required" />
                 <span asp-validation-for="PaseUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.CedulaUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.CedulaUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.CedulaUrl" class="form-control-fil" required="required" />
                 <span asp-validation-for="CedulaUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.TarjetonUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.TarjetonUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.TarjetonUrl" class="form-control-fil" required="required" />
                 <span asp-validation-for="TarjetonUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.SoatUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.SoatUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.SoatUrl" class="form-control-fil" required="required" />
                 <span asp-validation-for="SoatUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.LicenciaUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.LicenciaUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.LicenciaUrl" class="form-control-fil" required="required" />
                 <span asp-validation-for="LicenciaUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.OperacionUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.OperacionUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.OperacionUrl" class="form-control-fil" required="required" />
                 <span asp-validation-for="OperacionUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.SeguroUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.SeguroUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.SeguroUrl" class="form-control-fil" required="required" />
                 <span asp-validation-for="SeguroUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.TecnoUrl)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.TecnoUrl)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="file" asp-for="@Model.TecnoUrl" class="form-control-fil" required="required" />
                 <span asp-validation-for="TecnoUrl" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Espacios de Tiempo</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">Espacios de Tiempo</label>
+            <div class="col-md-6 col-sm-12">
                 <select class="form-control">
                     <option>15 Minutos</option>
                     <option>20 Minutos</option>
@@ -89,31 +89,31 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Categoría</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">Categoría</label>
+            <div class="col-md-6 col-sm-12">
                 <select asp-for="@Model.CategoryId" class="form-control" asp-items="@categories">
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Ciudad</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">Ciudad</label>
+            <div class="col-md-6 col-sm-12">
                 <select asp-for="@Model.CityId" class="form-control" asp-items="@cities">
                 </select>
                 <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.DriverName)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.DriverName)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="text" asp-for="@Model.DriverName" class="form-control" required="required">
                 <span asp-validation-for="DriverName" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.DriverContact)</label>
-            <div class="col-sm-8">
+            <label class="col-md-6 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.DriverContact)</label>
+            <div class="col-md-6 col-sm-12">
                 <input type="number" asp-for="@Model.DriverContact" class="form-control" required="required">
                 <span asp-validation-for="DriverContact" class="text-danger"></span>
             </div>

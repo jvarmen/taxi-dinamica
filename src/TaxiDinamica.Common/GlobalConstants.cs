@@ -73,7 +73,10 @@
 
         public static class Images
         {
-            public const string DemoImg = "https://res.cloudinary.com/cero-filas/image/upload/v1619833036/open-center_hl245i.jpg";
+            public const string DemoImg = "https://res.cloudinary.com/cero-filas/image/upload/v1620858717/images/wpmazrqzgwace1o2qmmy.jpg";
+            public const string Taxi2 = "https://res.cloudinary.com/cero-filas/image/upload/v1620882192/images/hnlhrdhb0zrju5uxrphz.jpg";
+            public const string Taxi3 = "https://res.cloudinary.com/cero-filas/image/upload/v1620883555/images/r2mjxtfstugaeaaywkw9.jpg";
+            public const string Taxi4 = "https://res.cloudinary.com/cero-filas/image/upload/v1622036404/images/xaqqlxeowhbal1lt3r5e.jpg";
         }
 
         public static class SeededDataCounts

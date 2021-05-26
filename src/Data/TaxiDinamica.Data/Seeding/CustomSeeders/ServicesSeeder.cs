@@ -19,244 +19,100 @@
                 {
                     new Service
                     {
-                        Name = "Reparación",
-                        Description = "Servicio de reparación.",
+                        Name = "Recoger pasajeros y Transportar",
+                        Description = "",
                         CategoryId = 1,
                     },
                     new Service
                     {
-                        Name = "Consulta",
-                        Description = "Servicio de Consulta.",
+                        Name = "Recoger caja y Transportar",
+                        Description = "",
                         CategoryId = 1,
                     },
                     new Service
                     {
-                        Name = "Asesoría",
-                        Description = "Servicio de Asesoría.",
+                        Name = "Transporte con carga pesada",
+                        Description = "",
                         CategoryId = 1,
                     },
                     new Service
                     {
-                        Name = "Compra",
-                        Description = "Servicio de Compra.",
+                        Name = "Pasajeros con maletas",
+                        Description = "",
                         CategoryId = 1,
                     },
                     new Service
                     {
-                        Name = "Venta",
-                        Description = "Servicio de Venta.",
-                        CategoryId = 1,
-                    },
-                    new Service
-                    {
-                        Name = "Cambio",
-                        Description = "Servicio de Cambio.",
-                        CategoryId = 1,
-                    },
-                    new Service
-                    {
-                        Name = "Cotización",
-                        Description = "Servicio de Cotización.",
-                        CategoryId = 1,
-                    },
-                    new Service
-                    {
-                        Name = "Solicitud",
-                        Description = "Servicio de Solicitud.",
-                        CategoryId = 1,
-                    },
-                    new Service
-                    {
-                        Name = "Reparación",
-                        Description = "Servicio de reparación.",
+                        Name = "Recoger pasajeros y Transportar",
+                        Description = "",
                         CategoryId = 2,
                     },
                     new Service
                     {
-                        Name = "Consulta",
-                        Description = "Servicio de Consulta.",
+                        Name = "Recoger caja y Transportar",
+                        Description = "",
                         CategoryId = 2,
                     },
                     new Service
                     {
-                        Name = "Asesoría",
-                        Description = "Servicio de Asesoría.",
+                        Name = "Transporte con carga pesada",
+                        Description = "",
                         CategoryId = 2,
                     },
                     new Service
                     {
-                        Name = "Compra",
-                        Description = "Servicio de Compra.",
+                        Name = "Pasajeros con maletas",
+                        Description = "",
                         CategoryId = 2,
                     },
                     new Service
                     {
-                        Name = "Venta",
-                        Description = "Servicio de Venta.",
-                        CategoryId = 2,
-                    },
-                    new Service
-                    {
-                        Name = "Cambio",
-                        Description = "Servicio de Cambio.",
-                        CategoryId = 2,
-                    },
-                    new Service
-                    {
-                        Name = "Cotización",
-                        Description = "Servicio de Cotización.",
-                        CategoryId = 2,
-                    },
-                    new Service
-                    {
-                        Name = "Solicitud",
-                        Description = "Servicio de Solicitud.",
-                        CategoryId = 2,
-                    },
-                    new Service
-                    {
-                        Name = "Reparación",
-                        Description = "Servicio de reparación.",
+                        Name = "Recoger pasajeros y Transportar",
+                        Description = "",
                         CategoryId = 3,
                     },
                     new Service
                     {
-                        Name = "Consulta",
-                        Description = "Servicio de Consulta.",
+                        Name = "Recoger caja y Transportar",
+                        Description = "",
                         CategoryId = 3,
                     },
                     new Service
                     {
-                        Name = "Asesoría",
-                        Description = "Servicio de Asesoría.",
+                        Name = "Transporte con carga pesada",
+                        Description = "",
                         CategoryId = 3,
                     },
                     new Service
                     {
-                        Name = "Compra",
-                        Description = "Servicio de Compra.",
+                        Name = "Pasajeros con maletas",
+                        Description = "",
                         CategoryId = 3,
                     },
                     new Service
                     {
-                        Name = "Venta",
-                        Description = "Servicio de Venta.",
-                        CategoryId = 3,
-                    },
-                    new Service
-                    {
-                        Name = "Cambio",
-                        Description = "Servicio de Cambio.",
-                        CategoryId = 3,
-                    },
-                    new Service
-                    {
-                        Name = "Cotización",
-                        Description = "Servicio de Cotización.",
-                        CategoryId = 3,
-                    },
-                    new Service
-                    {
-                        Name = "Solicitud",
-                        Description = "Servicio de Solicitud.",
-                        CategoryId = 3,
-                    },
-                    new Service
-                    {
-                        Name = "Reparación",
-                        Description = "Servicio de reparación.",
+                        Name = "Recoger pasajeros y Transportar",
+                        Description = "",
                         CategoryId = 4,
                     },
                     new Service
                     {
-                        Name = "Consulta",
-                        Description = "Servicio de Consulta.",
+                        Name = "Recoger caja y Transportar",
+                        Description = "",
                         CategoryId = 4,
                     },
                     new Service
                     {
-                        Name = "Asesoría",
-                        Description = "Servicio de Asesoría.",
+                        Name = "Transporte con carga pesada",
+                        Description = "",
                         CategoryId = 4,
                     },
                     new Service
                     {
-                        Name = "Compra",
-                        Description = "Servicio de Compra.",
+                        Name = "Pasajeros con maletas",
+                        Description = "",
                         CategoryId = 4,
-                    },
-                    new Service
-                    {
-                        Name = "Venta",
-                        Description = "Servicio de Venta.",
-                        CategoryId = 4,
-                    },
-                    new Service
-                    {
-                        Name = "Cambio",
-                        Description = "Servicio de Cambio.",
-                        CategoryId = 4,
-                    },
-                    new Service
-                    {
-                        Name = "Cotización",
-                        Description = "Servicio de Cotización.",
-                        CategoryId = 4,
-                    },
-                    new Service
-                    {
-                        Name = "Solicitud",
-                        Description = "Servicio de Solicitud.",
-                        CategoryId = 4,
-                    },
-                    new Service
-                    {
-                        Name = "Reparación",
-                        Description = "Servicio de reparación.",
-                        CategoryId = 5,
-                    },
-                    new Service
-                    {
-                        Name = "Consulta",
-                        Description = "Servicio de Consulta.",
-                        CategoryId = 5,
-                    },
-                    new Service
-                    {
-                        Name = "Asesoría",
-                        Description = "Servicio de Asesoría.",
-                        CategoryId = 5,
-                    },
-                    new Service
-                    {
-                        Name = "Compra",
-                        Description = "Servicio de Compra.",
-                        CategoryId = 5,
-                    },
-                    new Service
-                    {
-                        Name = "Venta",
-                        Description = "Servicio de Venta.",
-                        CategoryId = 5,
-                    },
-                    new Service
-                    {
-                        Name = "Cambio",
-                        Description = "Servicio de Cambio.",
-                        CategoryId = 5,
-                    },
-                    new Service
-                    {
-                        Name = "Cotización",
-                        Description = "Servicio de Cotización.",
-                        CategoryId = 5,
-                    },
-                    new Service
-                    {
-                        Name = "Solicitud",
-                        Description = "Servicio de Solicitud.",
-                        CategoryId = 5,
-                    },
+                    }
                 };
 
             // Need them in particular order
