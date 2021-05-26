@@ -44,6 +44,6 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'CeroFilaConnection'
-    appName: 'demo-cero-filas'
+    azureSubscription: 'TaxiDinamicaConnection'
+    appName: 'taxi-dinamica'
     package: $(System.DefaultWorkingDirectory)/**/*.zip    
