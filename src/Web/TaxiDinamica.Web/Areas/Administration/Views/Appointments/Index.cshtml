@@ -10,8 +10,12 @@
         <tr>
             <th scope="col">Fecha y Hora</th>
             <th scope="col">Cliente</th>
-            <th scope="col">Empresa</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Conductor</th>
             <th scope="col">Servicio</th>
+            <th scope="col">Dirección de Recogida</th>
+            <th scope="col">Dirección de Destino</th>
+            <th scope="col">Precio Ofrecido</th>
             <th scope="col">Estado</th>
         </tr>
     </thead>
@@ -21,8 +25,21 @@
             <tr>
                 <th scope="row">@appointment.DateTime.ToString("f")</th>
                 <td>@appointment.UserEmail</td>
-                <td>@appointment.PartnerName</td>
+                <td>@appointment.PartnerPlaca</td>
+                <td>@appointment.PartnerDriverName</td>
                 <td>@appointment.ServiceName</td>
+                <td>@appointment.AddressStart</td>
+                <td>@appointment.AddressEnd</td>
+                <td>
+                    @if (appointment.Price == 0)
+                    {
+                        <span>Taximetro</span>
+                    }
+                    else
+                    {
+                        <span>@appointment.Price</span>
+                    }
+                </td>
                 <td>
                     @if (appointment.Confirmed == true)
                     {

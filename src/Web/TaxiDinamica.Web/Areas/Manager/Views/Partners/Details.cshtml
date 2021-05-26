@@ -1,10 +1,9 @@
 ﻿@model TaxiDinamica.Web.ViewModels.Partners.PartnerWithServicesViewModel
 @{
-    this.ViewData["Title"] = "Gestionar Empresa: " + Model.Name;
+    this.ViewData["Title"] = "Gestionar Taxi: " + Model.Placa;
+    this.ViewData["cClass"] = "partner-details";
 }
-
 <div class="row row-eq-height">
-    <!-- Info Box -->
     <div class="col-lg-5">
         <div class="partner-details-slider swiper-container">
             <img src="@Model.ImageUrl" alt="" class="img-fluid">
@@ -13,15 +12,22 @@
         <div class="partner-info">
             <h3>Información</h3>
             <ul>
+                <li><strong>Placa</strong>: @Model.Placa</li>
                 <li><strong>Tipo de Servicio</strong>: @Model.CategoryName</li>
-                <li><strong>Dirección</strong>: @Model.CityName, @Model.Address</li>
-                <li><strong>Sitio Web</strong>: <strong>@Model.Website</strong></li>
+                <li><strong>Ciudad</strong>: @Model.CityName</li>
+                <li><strong>Conductor</strong>: @Model.DriverName</li>
+                <li><strong>Número del Conductor</strong>: @Model.DriverContact</li>
             </ul>
         </div>
     </div>
     <!-- Panel -->
     <div class="col-lg-7">
-        <h1>Servicios Ofrecidos:</h1>
+        <div class="partner-description features">
+            <div class="col-md-12">
+                <h2>Servicios Ofrecidos</h2>
+                <p>Cambia la disponibilidad de los servicios</p>
+            </div>
+        </div>
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
@@ -47,9 +53,9 @@
                         </td>
                         <td>
                             <form method="post">
-                                <button type="submit" class="btn btn-outline-info btn-sm"
-                                        asp-area="Manager" asp-controller="Partners" asp-action="ChangeServiceAvailableStatus" 
-                                        asp-route-PartnerId="@Model.Id" asp-route-serviceId="@service.ServiceId">
+                                <button type="submit" class="btn btn-outline-info btn-sm" asp-area="Manager"
+                                asp-controller="Partners" asp-action="ChangeServiceAvailableStatus"
+                                asp-route-PartnerId="@Model.Id" asp-route-serviceId="@service.ServiceId">
                                     Cambiar
                                 </button>
                             </form>
@@ -60,7 +66,7 @@
         </table>
     </div>
 </div>
-<hr class="bg-dark mx-4" style="height: 6px;" />
+<hr class="bg-dark mx-4" style="height: 3px;" />
 
 <div>
     @await Component.InvokeAsync("AllAppointmentsByPartner", Model.Id)

@@ -8,14 +8,14 @@
 
     public class CategoryInputModel
     {
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [StringLength(
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [StringLength(
             GlobalConstants.DataValidations.DescriptionMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Description,

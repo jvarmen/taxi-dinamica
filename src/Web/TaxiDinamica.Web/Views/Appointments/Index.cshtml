@@ -31,11 +31,11 @@
     </div>
     <div class="row">
         <div class="col-lg-4 ml-lg-5">
-            <div class="btn btn-secondary btn-lg mt-4">
-                <a asp-area="" asp-controller="Partners" asp-action="Index">
-                    <span>Buscar Empresas</span>
-                </a>
-            </div>
+            <a asp-area="" asp-controller="Partners" asp-action="Index">
+                <div class="btn btn-secondary btn-lg mt-4">
+                    <span>Buscar Taxis</span>
+                </div>
+            </a>
         </div>
     </div>
 }
@@ -49,9 +49,13 @@
             <tr>
                 <th scope="col">Fecha y Hora</th>
                 <th scope="col">Estado <span class="text-info">*</span></th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Dirección</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Conductor</th>
                 <th scope="col">Servicio</th>
+                <th scope="col">Dirección de Recogida</th>
+                <th scope="col">Dirección de Destino</th>
+                <th scope="col">Precio Ofrecido</th>
+                <th scope="col">Observaciones</th>
                 <th scope="col">Cancelación</th>
             </tr>
         </thead>
@@ -74,12 +78,25 @@
                             <span class="badge badge-secondary">Pendiente</span>
                         }
                     </td>
-                    <td>@appointment.PartnerName</td>
-                    <td>@appointment.PartnerAddress</td>
+                    <td>@appointment.PartnerPlaca</td>
+                    <td>@appointment.PartnerDriverName</td>
                     <td>@appointment.ServiceName</td>
+                    <td>@appointment.AddressStart</td>
+                    <td>@appointment.AddressEnd</td>
                     <td>
-                        <a class="btn btn-outline-danger btn-sm"
-                           asp-area="" asp-controller="Appointments" asp-action="CancelAppointment" asp-route-id="@appointment.Id">
+                        @if (appointment.Price == 0)
+                        {
+                            <span>Taximetro</span>
+                        }
+                        else
+                        {
+                            <span>@appointment.Price</span>
+                        }
+                    </td>
+                    <td>@appointment.Comment</td>
+                    <td>
+                        <a class="btn btn-outline-danger btn-sm" asp-area="" asp-controller="Appointments"
+                    asp-action="CancelAppointment" asp-route-id="@appointment.Id">
                             Cancelar
                         </a>
                     </td>
@@ -97,7 +114,7 @@
                 <ol>
                     <li>
                         <span class="badge badge-secondary">Pendiente</span>
-                        - Esperando respuesta de la empresa.
+                        - Esperando respuesta del conductor.
                     </li>
                     <li>
                         <span class="badge badge-success">Confirmada</span>
@@ -107,7 +124,6 @@
                     <li>
                         <span class="badge badge-danger">Declined</span>
                         - Lo sentimos, la cita no puede realizarse en la fecha y hora establecidas.
-                         Consulte su correo electrónico para conocer las opciones de reprogramación.
                     </li>
                 </ol>
                 <ul>
@@ -115,7 +131,7 @@
                     <li>
                         <div class="button button-large button_1 elements_button mt-4">
                             <a asp-area="" asp-controller="Partners" asp-action="Index">
-                                <span>Buscar empresas</span>
+                                <span>Buscar Taxis</span>
                             </a>
                         </div>
                     </li>

@@ -74,10 +74,10 @@
             var Partner = new Partner
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = new NLipsum.Core.Sentence().ToString(),
+                Placa = new NLipsum.Core.Sentence().ToString(),
                 CategoryId = 1,
-                Address = new NLipsum.Core.Sentence().ToString(),
-                Website = new NLipsum.Core.Word().ToString(),
+                DriverName = new NLipsum.Core.Sentence().ToString(),
+                DriverContact = new NLipsum.Core.Word().ToString(),
                 ImageUrl = new NLipsum.Core.Word().ToString(),
             };
 
@@ -105,12 +105,12 @@
             return service;
         }
 
-        private async Task<PartnerService> CreatePartnerServiceAsync(string PartnerId, int serviceId)
+        private async Task<PartnerService> CreatePartnerServiceAsync(string partnerId, int serviceId)
         {
             // Add PartnerService
             var PartnerService = new PartnerService
             {
-                PartnerId = PartnerId,
+                PartnerId = partnerId,
                 ServiceId = serviceId,
                 Available = true,
             };

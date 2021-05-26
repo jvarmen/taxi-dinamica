@@ -16,7 +16,7 @@
 
         Task<IEnumerable<T>> GetPastByUserAsync<T>(string userId);
 
-        Task AddAsync(string userId, string partnerId, int serviceId, DateTime dateTime);
+        Task AddAsync(string userId, string partnerId, int serviceId, DateTime dateTime, string addressStart, string addressEnd, string comment, int price);
 
         Task DeleteAsync(string id);
 

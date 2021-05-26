@@ -14,7 +14,7 @@
             this.Appointments = new HashSet<Appointment>();
         }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [MaxLength(GlobalConstants.DataValidations.NameMaxLength)]
         public string Name { get; set; }
 
@@ -22,7 +22,7 @@
 
         public virtual Category Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [MaxLength(GlobalConstants.DataValidations.DescriptionMaxLength)]
         public string Description { get; set; }
 

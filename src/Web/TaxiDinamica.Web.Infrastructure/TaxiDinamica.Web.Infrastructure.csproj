@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaxiDinamica.Web.ViewModels\TaxiDinamica.Web.ViewModels.csproj" />
     <ProjectReference Include="..\..\TaxiDinamica.Common\TaxiDinamica.Common.csproj" />
     <ProjectReference Include="..\..\Services\TaxiDinamica.Services.Data\TaxiDinamica.Services.Data.csproj" />
-    <ProjectReference Include="..\TaxiDinamica.Web.ViewModels\TaxiDinamica.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

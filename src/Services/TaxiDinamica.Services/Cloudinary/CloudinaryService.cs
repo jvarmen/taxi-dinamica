@@ -41,5 +41,31 @@
 
             return uploadResult?.SecureUri.AbsoluteUri;
         }
+        
+        public async Task<string> UploadRawAsync(IFormFile rawFile, string fileName)
+        {
+            byte[] destinationData;
+
+            using (var ms = new MemoryStream())
+            {
+                await rawFile.CopyToAsync(ms);
+                destinationData = ms.ToArray();
+            }
+
+            UploadResult uploadResult = null;
+
+            using (var ms = new MemoryStream(destinationData))
+            {
+                RawUploadParams uploadParams = new RawUploadParams
+                {
+                    Folder = "documents",
+                    File = new FileDescription(fileName, ms),
+                };
+
+                uploadResult = this.cloudinary.Upload(uploadParams);
+            }
+
+            return uploadResult?.SecureUri.AbsoluteUri;
+        }
     }
 }

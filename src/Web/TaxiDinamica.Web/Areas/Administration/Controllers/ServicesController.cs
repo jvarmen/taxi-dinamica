@@ -2,15 +2,15 @@
 {
     using System.Threading.Tasks;
 
-    using TaxiDinamica.Common;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+
     using TaxiDinamica.Services.Data.Categories;
     using TaxiDinamica.Services.Data.Partners;
     using TaxiDinamica.Services.Data.PartnerServicesServices;
     using TaxiDinamica.Services.Data.Services;
     using TaxiDinamica.Web.ViewModels.Common.SelectLists;
     using TaxiDinamica.Web.ViewModels.Services;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class ServicesController : AdministrationController
     {

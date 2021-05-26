@@ -12,15 +12,27 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Empresa</label>
+        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.PartnerPlaca)</label>
         <div class="col-sm-7">
-            <div class="form-control">@Model.PartnerName</div>
+            <div class="form-control">@Model.PartnerPlaca</div>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Dirección</label>
+        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.PartnerDriverName)</label>
         <div class="col-sm-7">
-            <div class="form-control">@Model.PartnerAddress</div>
+            <div class="form-control">@Model.PartnerDriverName</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.AddressStart)</label>
+        <div class="col-sm-7">
+            <div class="form-control">@Model.AddressStart</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.AddressEnd)</label>
+        <div class="col-sm-7">
+            <div class="form-control">@Model.AddressEnd</div>
         </div>
     </div>
     <div class="form-group row">

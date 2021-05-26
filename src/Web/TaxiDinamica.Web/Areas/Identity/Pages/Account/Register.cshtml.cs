@@ -7,14 +7,14 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using TaxiDinamica.Common;
-using TaxiDinamica.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using TaxiDinamica.Common;
+using TaxiDinamica.Data.Models;
 
 namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
 {
@@ -57,23 +57,24 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser 
-                { 
-                    Names = this.Input.Names, 
-                    LastNames = this.Input.LastNames, 
-                    DocumentId = this.Input.DocumentId, 
+                var user = new ApplicationUser
+                {
+                    Names = this.Input.Names,
+                    LastNames = this.Input.LastNames,
+                    DocumentId = this.Input.DocumentId,
                     PhoneNumber = this.Input.PhoneNumber,
-                    UserName = this.Input.Email, 
+                    UserName = this.Input.Email,
                     Email = this.Input.Email,
                 };
                 var result = await this.userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
-                    if(this.Input.Role)
+                    if (this.Input.Role)
                     {
                         returnUrl = this.Url.Content("~/Manager/Partners/AddPartner");
                         await this.userManager.AddToRoleAsync(user, GlobalConstants.PartnerManagerRoleName);
                     }
+                    
                     this.logger.LogInformation("User created a new account with password.");
 
                     var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -85,7 +86,7 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
                         protocol: this.Request.Scheme);
 
                     await this.emailSender.SendEmailAsync(
-                        this.Input.Email, 
+                        this.Input.Email,
                         "Confirmar tu correo",
                         $"Porfavor confirma tu cuenta dando <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>click aquí</a>.");
 
@@ -99,11 +100,14 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
                         return this.LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     this.ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+
+
             // If we got this far, something failed, redisplay form
             return this.Page();
         }
@@ -112,17 +116,17 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
         {
             public bool Role { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [DataType(DataType.Text)]
             [Display(Name = "Nombres")]
             public string Names { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [DataType(DataType.Text)]
             [Display(Name = "Apellidos")]
             public string LastNames { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [Range(0, int.MaxValue, ErrorMessage = "Porfavor ingrese un número de cédula válida")]
             [Display(Name = "Cédula de Ciudadanía")]
             public int DocumentId { get; set; }
@@ -131,12 +135,12 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             [Display(Name = "Número de Teléfono")]
             public string PhoneNumber { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} y {1} máximo de caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Contraseña")]

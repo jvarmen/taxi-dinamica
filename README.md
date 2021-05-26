@@ -1,12 +1,12 @@
 # TaxiDinamica
 
-Una aplicación para publicar empresas y gestionar citas.  :calendar:
+Una aplicación para publicar Taxis y gestionar citas.  :calendar:
 
 - Cuentas de Prueba:
 
   - SuperAdmin: admin@admin.com / password: admin12345
 
-  - Administrador de empresa: manager@manager.com / password: admin12345
+  - Administrador de Taxi: manager@manager.com / password: admin12345
 
   - Usuario: user@user.com / password: admin12345
 

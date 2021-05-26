@@ -11,9 +11,12 @@
         <thead class="thead-light">
             <tr>
                 <th scope="col">Fecha y hora</th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Dirección</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Conductor</th>
                 <th scope="col">Servicio</th>
+                <th scope="col">Dirección de Recogida</th>
+                <th scope="col">Dirección de Destino</th>
+                <th scope="col">Precio Ofrecido</th>
                 <th scope="col">Reservar de nuevo</th>
             </tr>
         </thead>
@@ -22,11 +25,25 @@
             {
                 <tr>
                     <th scope="row">@appointment.DateTime</th>
-                    <td>@appointment.PartnerName</td>
+                    <td>@appointment.PartnerPlaca</td>
+                    <td>@appointment.PartnerDriverName</td>
                     <td>@appointment.ServiceName</td>
+                    <td>@appointment.AddressStart</td>
+                    <td>@appointment.AddressEnd</td>
+                    <td>
+                        @if (appointment.Price == 0)
+                        {
+                            <span>Taximetro</span>
+                        }
+                        else
+                        {
+                            <span>@appointment.Price</span>
+                        }
+                    </td>
                     <td>
                         <div class="button elements_button">
-                            <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment" asp-route-PartnerId="@appointment.PartnerId" asp-route-serviceId="@appointment.ServiceId">
+                            <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment"
+                        asp-route-PartnerId="@appointment.PartnerId" asp-route-serviceId="@appointment.ServiceId">
                                 <span>Reservar de nuevo</span>
                             </a>
                         </div>

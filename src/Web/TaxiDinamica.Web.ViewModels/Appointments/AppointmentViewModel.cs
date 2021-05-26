@@ -9,23 +9,28 @@
     public class AppointmentViewModel : IMapFrom<Appointment>
     {
         public string Id { get; set; }
-
         public DateTime DateTime { get; set; }
-
         public string UserEmail { get; set; }
-
         public string PartnerId { get; set; }
 
-        public string PartnerName { get; set; }
-
-        public string PartnerAddress { get; set; }
-
+        [Display(Name = "Placa del Taxi")]
+        public string PartnerPlaca { get; set; }
+        public string PartnerDriverName { get; set; }
         public int ServiceId { get; set; }
-
         public string ServiceName { get; set; }
-
         public bool? Confirmed { get; set; }
-
         public bool? IsPartnerRatedByTheUser { get; set; }
+
+        [Display(Name = "Dirección de Recogida")]
+        public string AddressStart { get; set; }
+
+        [Display(Name = "Dirección de Destino")]
+        public string AddressEnd { get; set; }
+
+        [Display(Name = "Comentario Adicional")]
+        public string Comment { get; set; }
+        
+        [Display(Name = "Precio Ofrecido")]
+        public int Price { get; set; }
     }
 }

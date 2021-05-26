@@ -753,6 +753,10 @@ section {
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
+.card-image{
+  min-height: 250px;
+  max-height: 250px;
+}
 .partner-details {
   padding-top: 40px;
 }

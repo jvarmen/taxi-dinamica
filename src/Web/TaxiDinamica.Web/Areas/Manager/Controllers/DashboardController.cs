@@ -5,16 +5,14 @@
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    
     using TaxiDinamica.Data.Models;
     using TaxiDinamica.Services.Data.Partners;
     using TaxiDinamica.Web.ViewModels.Partners;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.AspNetCore.Mvc;
 
-    [Authorize]
     public class DashboardController : ManagerBaseController
     {
         private readonly UserManager<ApplicationUser> userManager;

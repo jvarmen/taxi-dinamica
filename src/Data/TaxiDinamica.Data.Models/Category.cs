@@ -14,11 +14,11 @@
             this.Partners = new HashSet<Partner>();
         }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [MaxLength(GlobalConstants.DataValidations.NameMaxLength)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [MaxLength(GlobalConstants.DataValidations.DescriptionMaxLength)]
         public string Description { get; set; }
 

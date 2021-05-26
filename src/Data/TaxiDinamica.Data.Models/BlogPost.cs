@@ -7,21 +7,21 @@
 
     public class BlogPost : BaseDeletableModel<int>
     {
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [MaxLength(GlobalConstants.DataValidations.TitleMaxLength)]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [MaxLength(GlobalConstants.DataValidations.ContentMaxLength)]
         public string Content { get; set; }
 
         // BlogPost can be created only in the Admin Dashboard
         // so the Author is not a User, just a string for name
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [MaxLength(GlobalConstants.DataValidations.NameMaxLength)]
         public string Author { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         public string ImageUrl { get; set; }
     }
 }

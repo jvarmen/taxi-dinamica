@@ -2,9 +2,9 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Services.Data.Appointments;
     using TaxiDinamica.Web.ViewModels.Appointments;
-    using Microsoft.AspNetCore.Mvc;
 
     public class AppointmentsController : AdministrationController
     {

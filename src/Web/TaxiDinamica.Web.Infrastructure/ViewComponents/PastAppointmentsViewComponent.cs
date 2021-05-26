@@ -2,11 +2,11 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Data.Models;
     using TaxiDinamica.Services.Data.Appointments;
     using TaxiDinamica.Web.ViewModels.Appointments;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
 
     public class PastAppointmentsViewComponent : ViewComponent
     {

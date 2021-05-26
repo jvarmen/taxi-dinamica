@@ -13,4 +13,3 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
         }
     }
 }
-

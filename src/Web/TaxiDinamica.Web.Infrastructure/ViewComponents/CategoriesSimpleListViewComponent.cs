@@ -2,9 +2,9 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Services.Data.Categories;
     using TaxiDinamica.Web.ViewModels.Categories;
-    using Microsoft.AspNetCore.Mvc;
 
     public class CategoriesSimpleListViewComponent : ViewComponent
     {

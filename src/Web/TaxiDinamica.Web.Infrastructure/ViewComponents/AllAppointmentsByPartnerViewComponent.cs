@@ -2,9 +2,9 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Services.Data.Appointments;
     using TaxiDinamica.Web.ViewModels.Appointments;
-    using Microsoft.AspNetCore.Mvc;
 
     public class AllAppointmentsByPartnerViewComponent : ViewComponent
     {
@@ -15,12 +15,12 @@
             this.appointmentsService = appointmentsService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string PartnerId)
+        public async Task<IViewComponentResult> InvokeAsync(string partnerId)
         {
             var viewModel = new AppointmentsListViewModel
             {
                 Appointments =
-                    await this.appointmentsService.GetAllByPartnerAsync<AppointmentViewModel>(PartnerId),
+                    await this.appointmentsService.GetAllByPartnerAsync<AppointmentViewModel>(partnerId),
             };
 
             return this.View(viewModel);

@@ -22,11 +22,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Accent-e-Technology",
+                        Placa = "AFR231",
                         CategoryId = 1,
                         CityId = 1,
-                        Address = "Laidlaw Close 28",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Laidlaw Close",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -34,11 +34,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Binary Infotech",
+                        Placa = "EWO123",
                         CategoryId = 1,
                         CityId = 1,
-                        Address = "Francis Way 198",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Francis Wayne",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -46,11 +46,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Clara Technologies",
+                        Placa = "SDF231",
                         CategoryId = 1,
                         CityId = 1,
-                        Address = "Rosehill Crescent 93",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Rosehill Crescent",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -60,11 +60,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Denis Soft Technologies",
+                        Placa = "WFG232",
                         CategoryId = 2,
                         CityId = 1,
-                        Address = "Pintail Close 5",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Pintail Moreno",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -72,11 +72,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Dexter Matrix",
+                        Placa = "ASD231",
                         CategoryId = 2,
                         CityId = 1,
-                        Address = "Ellesmere Gardens 143",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Ellesmere Gardens",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -84,11 +84,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Digitech Solution",
+                        Placa = "ASD234",
                         CategoryId = 2,
                         CityId = 1,
-                        Address = "Sykes Avenue 128",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Sykes Avenue",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -98,11 +98,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Eicon Technologies",
+                        Placa = "ADF534",
                         CategoryId = 3,
                         CityId = 1,
-                        Address = "Swinton Road 158",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Swinton Road",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -110,11 +110,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "ERP Solutions",
+                        Placa = "ASD231",
                         CategoryId = 3,
                         CityId = 1,
-                        Address = "Sunnydale 38",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Sunnydale Benito",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -122,11 +122,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Future Focus",
+                        Placa = "SWF687",
                         CategoryId = 3,
                         CityId = 1,
-                        Address = "Penywern Road 43",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Penny Roadhes",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -136,11 +136,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Nyku Systems",
+                        Placa = "YUI098",
                         CategoryId = 4,
                         CityId = 1,
-                        Address = "Greenview Drive 119",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Greenview Driver",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -148,11 +148,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Poineer IT",
+                        Placa = "CBN456",
                         CategoryId = 4,
                         CityId = 1,
-                        Address = "Stratford Crescent 15",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Stratford Crescent",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -160,11 +160,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Professional Softech",
+                        Placa = "YUO487",
                         CategoryId = 4,
                         CityId = 1,
-                        Address = "Malet Close 28",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Malet Cloban",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -174,11 +174,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Tech Wave",
+                        Placa = "JKL756",
                         CategoryId = 5,
                         CityId = 1,
-                        Address = "Abbotsbury Way 81",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Abbotsbury Warner",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -186,11 +186,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Zersa Technologies",
+                        Placa = "UIP453",
                         CategoryId = 5,
                         CityId = 1,
-                        Address = "Abbotsbury Way 81",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Abbotsbury Lulu",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,
@@ -198,11 +198,11 @@
                     new Partner
                     {
                         Id = "seeded" + Guid.NewGuid().ToString(),
-                        Name = "Costra Reparaciones",
+                        Placa = "BNM564",
                         CategoryId = 5,
                         CityId = 1,
-                        Address = "Close Way 81",
-                        Website = "www.example.TaxiDinamica.com.co",
+                        DriverName = "Anibal Cortes",
+                        DriverContact = "3188401247",
                         ImageUrl = GlobalConstants.Images.DemoImg,
                         Rating = 0.0,
                         RatersCount = 0,

@@ -14,14 +14,50 @@
             this.Services = new HashSet<PartnerService>();
         }
 
-        [Required]
-        [MaxLength(GlobalConstants.DataValidations.NameMaxLength)]
-        public string Name { get; set; }
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Placa")]
+        [StringLength(
+            GlobalConstants.DataValidations.PlacaMaxLength,
+            ErrorMessage = GlobalConstants.ErrorMessages.Placa,
+            MinimumLength = GlobalConstants.DataValidations.PlacaMinLength)]
 
-        [Required]
+        public string Placa { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Foto del Vehículo")]
         public string ImageUrl { get; set; }
 
-        public string DIANUrl { get; set; }
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Pase para Transporte Publico")]
+        public string DocPaseUrl { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Cédula del Conductor")]
+        public string DocCedulaUrl { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Tarjetón")]
+        public string DocTarjetonUrl { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "SOAT")]
+        public string DocSoatUrl { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Licencia")]
+        public string DocLicenciaUrl { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Tarjeta de Operación")]
+        public string DocOperacionUrl { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Seguro Extra y Contractual")]
+        public string DocSeguroUrl { get; set; }
+
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [Display(Name = "Revisión Tecnomecánica")]
+        public string DocTecnoUrl { get; set; }
 
         public string Schedule { get; set; }
 
@@ -37,11 +73,18 @@
 
         public virtual City City { get; set; }
 
-        [Required]
-        [MaxLength(GlobalConstants.DataValidations.AddressMaxLength)]
-        public string Address { get; set; }
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+        [StringLength(
+            GlobalConstants.DataValidations.NameMaxLength,
+            ErrorMessage = GlobalConstants.ErrorMessages.DriverName,
+            MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
+        [Display(Name = "Nombre del conductor")]
+        public string DriverName { get; set; }
 
-        public string Website { get; set; }
+        [Display(Name = "Contacto del conductor")]
+        public string DriverContact { get; set; }
+
+        public bool Available { get; set; }
 
         public double Rating { get; set; }
 

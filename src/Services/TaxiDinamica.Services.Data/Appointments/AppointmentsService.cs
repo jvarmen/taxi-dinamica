@@ -75,7 +75,7 @@
             return appointments;
         }
 
-        public async Task AddAsync(string userId, string partnerId, int serviceId, DateTime dateTime)
+        public async Task AddAsync(string userId, string partnerId, int serviceId, DateTime dateTime, string addressStart, string addressEnd, string comment, int price)
         {
             await this.appointmentsRepository.AddAsync(new Appointment
             {
@@ -84,6 +84,10 @@
                 UserId = userId,
                 PartnerId = partnerId,
                 ServiceId = serviceId,
+                AddressStart = addressStart,
+                AddressEnd = addressEnd,
+                Comment = comment,
+                Price = price,
             });
             await this.appointmentsRepository.SaveChangesAsync();
         }

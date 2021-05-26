@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using TaxiDinamica.Common;
     using TaxiDinamica.Data.Common.Models;
 
     public class PartnerService : BaseDeletableModel<int>
@@ -12,7 +12,7 @@
             this.Appointments = new HashSet<Appointment>();
         }
 
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         public string PartnerId { get; set; }
 
         public virtual Partner Partner { get; set; }

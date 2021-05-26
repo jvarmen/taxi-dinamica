@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using TaxiDinamica.Common;
 using TaxiDinamica.Data.Models;
 
 namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
@@ -73,11 +73,11 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
                     this.logger.LogInformation("Usuario loggeado.");
                     return this.LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
+                else if (result.RequiresTwoFactor)
                 {
                     return this.RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = this.Input.RememberMe });
                 }
-                if (result.IsLockedOut)
+                else if (result.IsLockedOut)
                 {
                     this.logger.LogWarning("Cuenta de usuario bloqueada.");
                     return this.RedirectToPage("./Lockout");
@@ -95,12 +95,12 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [EmailAddress]
             [Display(Name = "Correo Electrónico")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [Display(Name = "Contraseña")]
             [DataType(DataType.Password)]
             public string Password { get; set; }

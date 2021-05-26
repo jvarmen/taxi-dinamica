@@ -2,10 +2,10 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Common;
     using TaxiDinamica.Services.Data.Cities;
     using TaxiDinamica.Web.ViewModels.Cities;
-    using Microsoft.AspNetCore.Mvc;
 
     public class CitiesController : AdministrationController
     {

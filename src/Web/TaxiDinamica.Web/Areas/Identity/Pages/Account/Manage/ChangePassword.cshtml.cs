@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using TaxiDinamica.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using TaxiDinamica.Common;
+using TaxiDinamica.Data.Models;
+
 namespace TaxiDinamica.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
@@ -69,6 +71,7 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account.Manage
                 {
                     this.ModelState.AddModelError(string.Empty, error.Description);
                 }
+                
                 return this.Page();
             }
 
@@ -81,12 +84,12 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [DataType(DataType.Password)]
             [Display(Name = "Contraseña actual")]
             public string OldPassword { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
             [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} y {1} máximo de caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Nueva contraseña")]

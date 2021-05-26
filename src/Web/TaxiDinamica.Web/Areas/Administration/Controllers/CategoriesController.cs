@@ -2,11 +2,11 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Common;
     using TaxiDinamica.Services.Cloudinary;
     using TaxiDinamica.Services.Data.Categories;
     using TaxiDinamica.Web.ViewModels.Categories;
-    using Microsoft.AspNetCore.Mvc;
 
     public class CategoriesController : AdministrationController
     {

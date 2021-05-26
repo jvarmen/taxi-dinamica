@@ -30,18 +30,16 @@
 
             public const int ContentMaxLength = 3500;
 
-            public const int ContentMinLength = 700;
-
             public const int DescriptionMaxLength = 700;
 
             public const int DescriptionMinLength = 50;
 
+            public const int PlacaMinLength = 6;
+            public const int PlacaMaxLength = 6;
             public const int NameMaxLength = 40;
 
             public const int NameMinLength = 2;
             public const int TitleMaxLength = 60;
-
-            public const int TitleMinLength = 5;
         }
 
         public static class DateTimeFormats
@@ -56,22 +54,21 @@
         public static class ErrorMessages
         {
 
-            public const string Address = "Address must be between 5 and 100 characters.";
+            public const string DriverName = "Este campo debe tener entre 5 y 100 caracteres.";
 
-            public const string Author = "Author name must be between 2 and 40 characters.";
+            public const string DateTime = "Porfavor selecciona una fecha y hora valida en el selector de fechas a la izquirda.";
 
-            public const string Content = "Content must be between 700 and 3500 characters.";
+            public const string Description = "La descripción debe tener entre 50 y 700 caracteres.";
+            public const string DescriptionMax = "La descripción debe tener máximo 700 caracteres.";
 
-            public const string DateTime = "Please select a valid DATE and TIME from the datepicker calendar on the left.";
+            public const string Image = "Selecciona un archivo JPG, JPEG o PNG imagen con peso menor a 1MB.";
+            public const string Document = "Selecciona un archivo PDF o documento con peso menor a 1MB.";
+            public const string ReqFile = "Documento obligatorio. Selecciona un archivo.";
 
-            public const string Description = "Description must be between 50 and 700 characters.";
+            public const string Name = "Debe tener entre 4 y 20 caracteres.";
 
-            public const string Image = "Please select a JPG, JPEG or PNG image smaller than 1MB.";
-
-            public const string Name = "Name must be between 2 and 40 characters.";
-
-            public const string Rating = "Please choose a valid number of stars from 1 to 5.";
-            public const string Title = "Title must be between 5 and 60 characters.";
+            public const string Placa = "La placa de tener 6 caracteres sin separar.";
+            public const string Required = "Este campo es obligatorio.";
         }
 
         public static class Images

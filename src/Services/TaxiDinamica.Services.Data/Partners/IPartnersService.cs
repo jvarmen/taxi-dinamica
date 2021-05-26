@@ -20,8 +20,8 @@
         Task<IEnumerable<string>> GetAllIdsByCategoryAsync(int categoryId);
 
         Task<T> GetByIdAsync<T>(string id);
-
-        Task<string> AddAsync(string name, int categoryId, int cityId, string address, string website, string imageUrl, string ownerId);
+// string docTarjetonUrl, string docSoatUrl, string docLicenciaUrl, string docOperacionUrl, string docSeguroUrl, string docTecnoUrl,
+        Task<string> AddAsync(string placa, int categoryId, int cityId, string driverName, string driverContact, string imageUrl, string docPaseUrl, string docCedulaUrl, string docTarjetonUrl, string docSoatUrl, string docLicenciaUrl, string docOperacionUrl, string docSeguroUrl, string docTecnoUrl, string ownerId);
 
         Task DeleteAsync(string id);
 

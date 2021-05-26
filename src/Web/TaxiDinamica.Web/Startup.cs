@@ -2,6 +2,14 @@
 {
     using System.Reflection;
 
+    using CloudinaryDotNet;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using TaxiDinamica.Common;
     using TaxiDinamica.Data;
     using TaxiDinamica.Data.Common;
@@ -21,14 +29,6 @@
     using TaxiDinamica.Services.Mapping;
     using TaxiDinamica.Services.Messaging;
     using TaxiDinamica.Web.ViewModels;
-    using CloudinaryDotNet;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
 
     public class Startup
     {

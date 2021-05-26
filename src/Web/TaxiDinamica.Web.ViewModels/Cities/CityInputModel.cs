@@ -6,7 +6,7 @@
 
     public class CityInputModel
     {
-        [Required]
+        [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
         [StringLength(
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,

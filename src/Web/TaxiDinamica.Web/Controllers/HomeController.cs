@@ -3,11 +3,11 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Common;
     using TaxiDinamica.Services.Data.Categories;
     using TaxiDinamica.Web.ViewModels;
     using TaxiDinamica.Web.ViewModels.Home;
-    using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {

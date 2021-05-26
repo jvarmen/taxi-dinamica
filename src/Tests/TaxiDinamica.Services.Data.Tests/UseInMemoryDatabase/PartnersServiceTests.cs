@@ -43,28 +43,28 @@
             var Partner1 = new Partner
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = new NLipsum.Core.Sentence().ToString(),
+                Placa = new NLipsum.Core.Sentence().ToString(),
                 CategoryId = 5,
-                Address = new NLipsum.Core.Sentence().ToString(),
-                Website = new NLipsum.Core.Word().ToString(),
+                DriverName = new NLipsum.Core.Sentence().ToString(),
+                DriverContact = new NLipsum.Core.Word().ToString(),
                 ImageUrl = new NLipsum.Core.Word().ToString(),
             };
             var Partner2 = new Partner
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = new NLipsum.Core.Sentence().ToString(),
+                Placa = new NLipsum.Core.Sentence().ToString(),
                 CategoryId = 5,
-                Address = new NLipsum.Core.Sentence().ToString(),
-                Website = new NLipsum.Core.Word().ToString(),
+                DriverName = new NLipsum.Core.Sentence().ToString(),
+                DriverContact = new NLipsum.Core.Word().ToString(),
                 ImageUrl = new NLipsum.Core.Word().ToString(),
             };
             var Partner3 = new Partner
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = new NLipsum.Core.Sentence().ToString(),
+                Placa = new NLipsum.Core.Sentence().ToString(),
                 CategoryId = 5,
-                Address = new NLipsum.Core.Sentence().ToString(),
-                Website = new NLipsum.Core.Word().ToString(),
+                DriverName = new NLipsum.Core.Sentence().ToString(),
+                DriverContact = new NLipsum.Core.Word().ToString(),
                 ImageUrl = new NLipsum.Core.Word().ToString(),
                 Rating = 4,
                 RatersCount = 1,
@@ -93,12 +93,20 @@
             var name = new NLipsum.Core.Sentence().ToString();
             var categoryId = 1;
             var cityId = 1;
-            var address = new NLipsum.Core.Sentence().ToString();
-            var website = new NLipsum.Core.Word().ToString();
+            var DriverName = new NLipsum.Core.Sentence().ToString();
+            var DriverContact =  new NLipsum.Core.Word().ToString();
             var imageUrl = new NLipsum.Core.Word().ToString();
+            var docPaseUrl = new NLipsum.Core.Word().ToString();
+            var docCedulaUrl = new NLipsum.Core.Word().ToString();
+            var docTarjetonUrl = new NLipsum.Core.Word().ToString();
+            var docSoatUrl = new NLipsum.Core.Word().ToString();
+            var docLicenciaUrl = new NLipsum.Core.Word().ToString();
+            var docOperacionUrl = new NLipsum.Core.Word().ToString();
+            var docSeguroUrl = new NLipsum.Core.Word().ToString();
+            var docTecnoUrl = new NLipsum.Core.Word().ToString();
             var ownerId = Guid.NewGuid().ToString();
 
-            await this.Service.AddAsync(name, categoryId, cityId, address, website, imageUrl, ownerId);
+            await this.Service.AddAsync(name, categoryId, cityId, DriverName, DriverContact, imageUrl, docPaseUrl, docCedulaUrl, docTarjetonUrl, docSoatUrl, docLicenciaUrl, docOperacionUrl, docSeguroUrl, docTecnoUrl, ownerId);
 
             var PartnersCount = await this.DbContext.Partners.CountAsync();
             Assert.Equal(2, PartnersCount);
@@ -139,10 +147,10 @@
             var Partner = new Partner
             {
                 Id = newGuidId,
-                Name = new NLipsum.Core.Sentence().ToString(),
+                Placa = new NLipsum.Core.Sentence().ToString(),
                 CategoryId = 1,
-                Address = new NLipsum.Core.Sentence().ToString(),
-                Website = new NLipsum.Core.Word().ToString(),
+                DriverName = new NLipsum.Core.Sentence().ToString(),
+                DriverContact = new NLipsum.Core.Word().ToString(),
                 ImageUrl = new NLipsum.Core.Word().ToString(),
                 Rating = 4,
                 RatersCount = 1,

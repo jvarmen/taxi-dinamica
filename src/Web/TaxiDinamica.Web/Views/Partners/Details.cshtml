@@ -1,10 +1,9 @@
 ﻿@model TaxiDinamica.Web.ViewModels.Partners.PartnerWithServicesViewModel
 @{
-    this.ViewData["Title"] = "Partner: " + Model.Name;
+    this.ViewData["Title"] = "Partner: " + Model.Placa;
     this.ViewData["cClass"] = "partner-details";
 }
 <div class="row gy-4">
-
     <div class="col-lg-4">
         <div class="partner-details-slider swiper-container">
             <img src="@Model.ImageUrl" alt="" class="img-fluid">
@@ -13,9 +12,11 @@
         <div class="partner-info">
             <h3>Información</h3>
             <ul>
+                <li><strong>Placa</strong>: @Model.Placa</li>
                 <li><strong>Tipo de Servicio</strong>: @Model.CategoryName</li>
-                <li><strong>Dirección</strong>: @Model.CityName, @Model.Address</li>
-                <li><strong>Sitio Web</strong>: <strong>@Model.Website</strong></li>
+                <li><strong>Ciudad</strong>: @Model.CityName</li>
+                <li><strong>Conductor</strong>: @Model.DriverName</li>
+                <li><strong>Número del Conductor</strong>: @Model.DriverContact</li>
             </ul>
         </div>
     </div>

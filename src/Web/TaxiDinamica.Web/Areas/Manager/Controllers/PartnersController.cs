@@ -1,29 +1,26 @@
 ﻿namespace TaxiDinamica.Web.Areas.Manager.Controllers
 {
     using System;
-    using System.Text;
-    using System.Text.Encodings.Web;
     using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.Extensions.Logging;
 
     using TaxiDinamica.Common;
     using TaxiDinamica.Data.Models;
     using TaxiDinamica.Services.Cloudinary;
-    using TaxiDinamica.Services.Data.Categories;
     using TaxiDinamica.Services.Data.Appointments;
+    using TaxiDinamica.Services.Data.Categories;
     using TaxiDinamica.Services.Data.Cities;
     using TaxiDinamica.Services.Data.Partners;
     using TaxiDinamica.Services.Data.PartnerServicesServices;
     using TaxiDinamica.Services.Data.Services;
     using TaxiDinamica.Web.ViewModels.Common.SelectLists;
     using TaxiDinamica.Web.ViewModels.Partners;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.Extensions.Logging;
 
-    [Authorize]
     public class PartnersController : ManagerBaseController
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -95,7 +92,7 @@
             string imageUrl;
             try
             {
-                imageUrl = await this.cloudinaryService.UploadPictureAsync(input.Image, input.Name);
+                imageUrl = await this.cloudinaryService.UploadPictureAsync(input.Image, input.Placa);
             }
             catch (System.Exception)
             {
@@ -103,11 +100,107 @@
                 imageUrl = GlobalConstants.Images.DemoImg;
             }
 
+            string docPaseUrl;
+            try
+            {
+                string tempname = "Pase -" + input.Placa;
+                docPaseUrl = await this.cloudinaryService.UploadPictureAsync(input.PaseUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docPaseUrl = GlobalConstants.Images.DemoImg;
+            }
+
+            string docCedulaUrl;
+            try
+            {
+                string tempname = "Cedula -" + input.Placa;
+                docCedulaUrl = await this.cloudinaryService.UploadPictureAsync(input.CedulaUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docCedulaUrl = GlobalConstants.Images.DemoImg;
+            }
+
+            string docTarjetonUrl;
+            try
+            {
+                string tempname = "Tarjeton -" + input.Placa;
+                docTarjetonUrl = await this.cloudinaryService.UploadPictureAsync(input.TarjetonUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docTarjetonUrl = GlobalConstants.Images.DemoImg;
+            }
+
+            string docSoatUrl;
+            try
+            {
+                string tempname = "Soat -" + input.Placa;
+                docSoatUrl = await this.cloudinaryService.UploadPictureAsync(input.SoatUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docSoatUrl = GlobalConstants.Images.DemoImg;
+            }
+
+            string docLicenciaUrl;
+            try
+            {
+                string tempname = "Licencia -" + input.Placa;
+                docLicenciaUrl = await this.cloudinaryService.UploadPictureAsync(input.LicenciaUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docLicenciaUrl = GlobalConstants.Images.DemoImg;
+            }
+
+            string docOperacionUrl;
+            try
+            {
+                string tempname = "Operacion -" + input.Placa;
+                docOperacionUrl = await this.cloudinaryService.UploadPictureAsync(input.OperacionUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docOperacionUrl = GlobalConstants.Images.DemoImg;
+            }
+
+            string docSeguroUrl;
+            try
+            {
+                string tempname = "Seguro -" + input.Placa;
+                docSeguroUrl = await this.cloudinaryService.UploadPictureAsync(input.SeguroUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docSeguroUrl = GlobalConstants.Images.DemoImg;
+            }
+
+            string docTecnoUrl;
+            try
+            {
+                string tempname = "Tecno -" + input.Placa;
+                docTecnoUrl = await this.cloudinaryService.UploadPictureAsync(input.TecnoUrl, tempname);
+            }
+            catch (System.Exception)
+            {
+                // In case of missing Cloudinary configuration from appsettings.json
+                docTecnoUrl = GlobalConstants.Images.DemoImg;
+            }
+
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             var userId = await this.userManager.GetUserIdAsync(user);
             
             // Add Partner
-            var partnerId = await this.partnersService.AddAsync(input.Name, input.CategoryId, input.CityId, input.Address, input.Website, imageUrl, userId);
+            var partnerId = await this.partnersService.AddAsync(input.Placa, input.CategoryId, input.CityId, input.DriverName, input.DriverContact, imageUrl, docPaseUrl, docCedulaUrl, docTarjetonUrl, docSoatUrl, docLicenciaUrl, docOperacionUrl, docSeguroUrl, docTecnoUrl, userId);
 
             // Add to the Partner all Services from its Category
             var servicesIds = await this.servicesService.GetAllIdsByCategoryAsync(input.CategoryId);

@@ -5,6 +5,10 @@
     using System.Text;
     using System.Text.Encodings.Web;
 
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Data.Models;
     using TaxiDinamica.Services.Data.Appointments;
     using TaxiDinamica.Services.Data.Partners;
@@ -12,10 +16,6 @@
     using TaxiDinamica.Services.DateTimeParser;
     using TaxiDinamica.Web.ViewModels.Appointments;
     using TaxiDinamica.Web.ViewModels.PartnerServices;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.AspNetCore.Mvc;
 
     [Authorize]
     public class AppointmentsController : BaseController
@@ -93,7 +93,7 @@
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             var userId = await this.userManager.GetUserIdAsync(user);
 
-            await this.appointmentsService.AddAsync(userId, input.PartnerId, input.ServiceId, dateTime);
+            await this.appointmentsService.AddAsync(userId, input.PartnerId, input.ServiceId, dateTime, input.AddressStart, input.AddressEnd, input.Comment, input.Price);
 
             var callbackUrl = this.Url.Page("/Appoinments");
 

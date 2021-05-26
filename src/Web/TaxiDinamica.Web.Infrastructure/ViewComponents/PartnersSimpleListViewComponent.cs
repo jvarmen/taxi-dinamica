@@ -2,9 +2,9 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Services.Data.Partners;
     using TaxiDinamica.Web.ViewModels.Partners;
-    using Microsoft.AspNetCore.Mvc;
 
     public class PartnersSimpleListViewComponent : ViewComponent
     {

@@ -2,9 +2,9 @@
 {
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Services.Data.PartnerServicesServices;
     using TaxiDinamica.Web.ViewModels.PartnerServices;
-    using Microsoft.AspNetCore.Mvc;
 
     public class PartnerServiceDetailsViewComponent : ViewComponent
     {
@@ -15,10 +15,10 @@
             this.PartnerServicesService = PartnerServicesService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string PartnerId, int serviceId)
+        public async Task<IViewComponentResult> InvokeAsync(string partnerId, int serviceId)
         {
             var viewModel =
-                await this.PartnerServicesService.GetByIdAsync<PartnerServiceDetailsViewModel>(PartnerId, serviceId);
+                await this.PartnerServicesService.GetByIdAsync<PartnerServiceDetailsViewModel>(partnerId, serviceId);
 
             return this.View(viewModel);
         }

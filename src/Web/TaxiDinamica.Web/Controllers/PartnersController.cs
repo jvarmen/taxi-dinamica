@@ -4,12 +4,12 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using TaxiDinamica.Services.Data.Categories;
     using TaxiDinamica.Services.Data.Partners;
     using TaxiDinamica.Web.ViewModels.Categories;
     using TaxiDinamica.Web.ViewModels.Common.Pagination;
     using TaxiDinamica.Web.ViewModels.Partners;
-    using Microsoft.AspNetCore.Mvc;
 
     public class PartnersController : BaseController
     {
@@ -59,8 +59,7 @@
             var pageIndex = pageNumber ?? 1;
 
             var partners = await this.partnersService
-                .GetAllWithSortingFilteringAndPagingAsync<PartnerViewModel>(
-                    searchString, sortId,pageSize, pageIndex);
+                .GetAllWithSortingFilteringAndPagingAsync<PartnerViewModel>(searchString, sortId, pageSize, pageIndex);
             var partnersList = partners.ToList();
 
             var count = await this.partnersService

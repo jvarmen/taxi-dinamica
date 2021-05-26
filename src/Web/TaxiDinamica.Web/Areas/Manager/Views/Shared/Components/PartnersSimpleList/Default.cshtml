@@ -6,5 +6,5 @@
 @foreach (var Partner in Model.Partners)
 {
     <a asp-area="Manager" asp-controller="Partners" asp-action="Details" asp-route-id="@Partner.Id"
-       class="list-group-item list-group-item-action bg-light">@Partner.Name</a>
+       class="list-group-item list-group-item-action bg-light">@Partner.Placa</a>
 }

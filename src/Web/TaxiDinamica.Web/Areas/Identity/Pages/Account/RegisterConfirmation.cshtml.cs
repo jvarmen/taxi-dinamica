@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using System.Text;
+﻿using System.Text;
 using System.Threading.Tasks;
-using TaxiDinamica.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using TaxiDinamica.Data.Models;
 
 namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
 {
@@ -42,6 +42,7 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             }
 
             this.Email = email;
+            
             // Once you add a real email sender, you should remove this code that lets you confirm the account
             this.DisplayConfirmAccountLink = true;
             if (this.DisplayConfirmAccountLink)

@@ -24,7 +24,7 @@
             var partners =
                 await this.partnersRepository
                 .All()
-                .OrderBy(x => x.Name)
+                .OrderBy(x => x.Placa)
                 .To<T>().ToListAsync();
             return partners;
         }
@@ -35,11 +35,11 @@
                 await this.partnersRepository
                 .All()
                 .Where(x => x.OwnerId == ownerId)
-                .OrderBy(x => x.Name)
+                .OrderBy(x => x.Placa)
                 .To<T>().ToListAsync();
             return partners;
         }
-        
+
 
         public async Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
             string searchString,
@@ -50,12 +50,12 @@
             IQueryable<Partner> query =
                 this.partnersRepository
                 .AllAsNoTracking()
-                .OrderBy(x => x.Name);
+                .OrderBy(x => x.Placa);
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 query = query
-                    .Where(x => x.Name.ToLower()
+                    .Where(x => x.Placa.ToLower()
                                 .Contains(searchString.ToLower()));
             }
 
@@ -76,12 +76,12 @@
             IQueryable<Partner> query =
                 this.partnersRepository
                 .AllAsNoTracking()
-                .OrderBy(x => x.Name);
+                .OrderBy(x => x.Placa);
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 query = query
-                    .Where(x => x.Name.ToLower()
+                    .Where(x => x.Placa.ToLower()
                                 .Contains(searchString.ToLower()));
             }
 
@@ -115,18 +115,28 @@
             return partner;
         }
 
-        public async Task<string> AddAsync(string name, int categoryId, int cityId, string address, string website, string imageUrl, string ownerId)
+        public async Task<string> AddAsync(string placa, int categoryId, int cityId, string driverName, string driverContact, string imageUrl, string docPaseUrl, string docCedulaUrl, string docTarjetonUrl, string docSoatUrl, string docLicenciaUrl, string docOperacionUrl, string docSeguroUrl, string docTecnoUrl, string ownerId)
         {
             var partner = new Partner
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = name,
+                Placa = placa.ToUpper(),
+                ImageUrl = imageUrl,
+                DocPaseUrl = docPaseUrl,
+                DocCedulaUrl = docCedulaUrl,
+                DocTarjetonUrl = docTarjetonUrl,
+                DocSoatUrl = docSoatUrl,
+                DocLicenciaUrl = docLicenciaUrl,
+                DocOperacionUrl = docOperacionUrl,
+                DocSeguroUrl = docSeguroUrl,
+                DocTecnoUrl = docTecnoUrl,
+                OwnerId = ownerId,
                 CategoryId = categoryId,
                 CityId = cityId,
-                Address = address,
-                Website = website,
-                ImageUrl = imageUrl,
-                OwnerId = ownerId,
+                DriverName = driverName,
+                DriverContact = driverContact,
+                Schedule = "15",
+                Available = false,
                 Rating = 0,
                 RatersCount = 0,
             };

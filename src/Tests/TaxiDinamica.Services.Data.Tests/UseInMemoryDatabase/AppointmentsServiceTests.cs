@@ -34,10 +34,14 @@
 
             var dateTime = DateTime.UtcNow.AddDays(5);
             var userId = Guid.NewGuid().ToString();
-            var PartnerId = Guid.NewGuid().ToString();
+            var partnerId = Guid.NewGuid().ToString();
             var serviceId = 1;
+            var addressStart = Guid.NewGuid().ToString();
+            var addressEnd = Guid.NewGuid().ToString();
+            var comment = Guid.NewGuid().ToString();
+            var price = 123123;
 
-            await this.Service.AddAsync(userId, PartnerId, serviceId, dateTime);
+            await this.Service.AddAsync(userId, partnerId, serviceId, dateTime, addressStart, addressEnd, comment, price);
 
             var appointmentsCount = await this.DbContext.Appointments.CountAsync();
             Assert.Equal(2, appointmentsCount);

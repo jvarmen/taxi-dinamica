@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
     <PackageReference Include="CloudinaryDotNet" Version="1.10.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
@@ -32,7 +33,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
-    <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.96" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
@@ -42,12 +42,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\TaxiDinamica.Data.Models\TaxiDinamica.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\TaxiDinamica.Data\TaxiDinamica.Data.csproj" />
+    <ProjectReference Include="..\..\Data\TaxiDinamica.Data.Models\TaxiDinamica.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Services\TaxiDinamica.Services\TaxiDinamica.Services.csproj" />
     <ProjectReference Include="..\..\Services\TaxiDinamica.Services.Data\TaxiDinamica.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\TaxiDinamica.Services.Mapping\TaxiDinamica.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\TaxiDinamica.Services.Messaging\TaxiDinamica.Services.Messaging.csproj" />
-    <ProjectReference Include="..\..\Services\TaxiDinamica.Services\TaxiDinamica.Services.csproj" />
     <ProjectReference Include="..\TaxiDinamica.Web.Infrastructure\TaxiDinamica.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\TaxiDinamica.Web.ViewModels\TaxiDinamica.Web.ViewModels.csproj" />
   </ItemGroup>
