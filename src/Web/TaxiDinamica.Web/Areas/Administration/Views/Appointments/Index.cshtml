@@ -23,7 +23,7 @@
         @foreach (var appointment in this.Model.Appointments)
         {
             <tr>
-                <th scope="row">@appointment.DateTime.ToString("f")</th>
+                <th scope="row">@appointment.DateTime.ToString("f", new System.Globalization.CultureInfo("es-CO"))</th>
                 <td>@appointment.UserEmail</td>
                 <td>@appointment.PartnerPlaca</td>
                 <td>@appointment.PartnerDriverName</td>
