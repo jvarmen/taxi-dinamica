@@ -50,7 +50,7 @@
             IQueryable<Partner> query =
                 this.partnersRepository
                 .AllAsNoTracking()
-                .OrderBy(x => x.Placa);
+                .OrderBy(x => x.Id);
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -76,7 +76,7 @@
             IQueryable<Partner> query =
                 this.partnersRepository
                 .AllAsNoTracking()
-                .OrderBy(x => x.Placa);
+                .OrderBy(x => x.Id);
 
             if (!string.IsNullOrEmpty(searchString))
             {
