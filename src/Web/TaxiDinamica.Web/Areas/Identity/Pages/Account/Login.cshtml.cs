@@ -96,7 +96,7 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "Ingresa un correo electrónico válido")]
             [Display(Name = "Correo Electrónico")]
             public string Email { get; set; }
 

@@ -29,7 +29,6 @@
             <hr />
             <div class="my-2">
                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <div asp-validation-summary="All" class="text-danger"></div>
                     <input asp-for="Input.Role" class="form-control" hidden id="RolePicked" />
                     <div class="form-group">
                         <label asp-for="Input.Names"></label>

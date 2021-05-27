@@ -56,7 +56,7 @@
 
             using (var ms = new MemoryStream(destinationData))
             {
-                RawUploadParams uploadParams = new RawUploadParams
+                ImageUploadParams uploadParams = new ImageUploadParams
                 {
                     Folder = "documents",
                     File = new FileDescription(fileName, ms),

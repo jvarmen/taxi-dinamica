@@ -61,7 +61,7 @@
             var userId = await this.userManager.GetUserIdAsync(user);
 
             var viewModel = await this.partnersService.GetByIdAsync<PartnerWithServicesViewModel>(id);
-            
+
             if (viewModel == null)
             {
                 return new StatusCodeResult(404);
@@ -103,8 +103,7 @@
             string docPaseUrl;
             try
             {
-                string tempname = "Pase -" + input.Placa;
-                docPaseUrl = await this.cloudinaryService.UploadPictureAsync(input.PaseUrl, tempname);
+                docPaseUrl = await this.cloudinaryService.UploadRawAsync(input.PaseUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -115,8 +114,7 @@
             string docCedulaUrl;
             try
             {
-                string tempname = "Cedula -" + input.Placa;
-                docCedulaUrl = await this.cloudinaryService.UploadPictureAsync(input.CedulaUrl, tempname);
+                docCedulaUrl = await this.cloudinaryService.UploadRawAsync(input.CedulaUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -127,8 +125,7 @@
             string docTarjetonUrl;
             try
             {
-                string tempname = "Tarjeton -" + input.Placa;
-                docTarjetonUrl = await this.cloudinaryService.UploadPictureAsync(input.TarjetonUrl, tempname);
+                docTarjetonUrl = await this.cloudinaryService.UploadRawAsync(input.TarjetonUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -139,8 +136,7 @@
             string docSoatUrl;
             try
             {
-                string tempname = "Soat -" + input.Placa;
-                docSoatUrl = await this.cloudinaryService.UploadPictureAsync(input.SoatUrl, tempname);
+                docSoatUrl = await this.cloudinaryService.UploadRawAsync(input.SoatUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -151,8 +147,7 @@
             string docLicenciaUrl;
             try
             {
-                string tempname = "Licencia -" + input.Placa;
-                docLicenciaUrl = await this.cloudinaryService.UploadPictureAsync(input.LicenciaUrl, tempname);
+                docLicenciaUrl = await this.cloudinaryService.UploadRawAsync(input.LicenciaUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -163,8 +158,7 @@
             string docOperacionUrl;
             try
             {
-                string tempname = "Operacion -" + input.Placa;
-                docOperacionUrl = await this.cloudinaryService.UploadPictureAsync(input.OperacionUrl, tempname);
+                docOperacionUrl = await this.cloudinaryService.UploadRawAsync(input.OperacionUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -175,8 +169,7 @@
             string docSeguroUrl;
             try
             {
-                string tempname = "Seguro -" + input.Placa;
-                docSeguroUrl = await this.cloudinaryService.UploadPictureAsync(input.SeguroUrl, tempname);
+                docSeguroUrl = await this.cloudinaryService.UploadRawAsync(input.SeguroUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -187,8 +180,7 @@
             string docTecnoUrl;
             try
             {
-                string tempname = "Tecno -" + input.Placa;
-                docTecnoUrl = await this.cloudinaryService.UploadPictureAsync(input.TecnoUrl, tempname);
+                docTecnoUrl = await this.cloudinaryService.UploadRawAsync(input.TecnoUrl, input.Placa);
             }
             catch (System.Exception)
             {
@@ -198,7 +190,7 @@
 
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             var userId = await this.userManager.GetUserIdAsync(user);
-            
+
             // Add Partner
             var partnerId = await this.partnersService.AddAsync(input.Placa, input.CategoryId, input.CityId, input.DriverName, input.DriverContact, imageUrl, docPaseUrl, docCedulaUrl, docTarjetonUrl, docSoatUrl, docLicenciaUrl, docOperacionUrl, docSeguroUrl, docTecnoUrl, userId);
 

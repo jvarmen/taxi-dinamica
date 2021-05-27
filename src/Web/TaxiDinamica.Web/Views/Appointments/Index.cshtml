@@ -63,7 +63,7 @@
             @foreach (var appointment in this.Model.Appointments)
             {
                 <tr>
-                    <th scope="row">@appointment.DateTime.ToString("f")</th>
+                    <th scope="row">@appointment.DateTime.ToString("f", new System.Globalization.CultureInfo("es-MX"))</th>
                     <td>
                         @if (appointment.Confirmed == true)
                         {
@@ -90,7 +90,7 @@
                         }
                         else
                         {
-                            <span>@appointment.Price</span>
+                            <span>$@appointment.Price</span>
                         }
                     </td>
                     <td>@appointment.Comment</td>

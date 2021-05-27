@@ -117,12 +117,12 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             public bool Role { get; set; }
 
             [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
-            [DataType(DataType.Text)]
+            [DataType(DataType.Text, ErrorMessage = "Revise la información escrita en Nombres")]
             [Display(Name = "Nombres")]
             public string Names { get; set; }
 
             [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
-            [DataType(DataType.Text)]
+            [DataType(DataType.Text, ErrorMessage = "Revise la información escrita en Apellidos")]
             [Display(Name = "Apellidos")]
             public string LastNames { get; set; }
 
@@ -131,13 +131,13 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             [Display(Name = "Cédula de Ciudadanía")]
             public int DocumentId { get; set; }
 
-            [Phone]
+            [Phone(ErrorMessage = "Ingresa un número de teléfono válido")]
             [Display(Name = "Número de Teléfono")]
             public string PhoneNumber { get; set; }
 
             [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
-            [EmailAddress]
-            [Display(Name = "Email")]
+            [EmailAddress(ErrorMessage = "Ingresa un correo electrónico válido")]
+            [Display(Name = "Correo")]
             public string Email { get; set; }
 
             [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]

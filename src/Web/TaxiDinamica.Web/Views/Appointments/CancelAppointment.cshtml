@@ -6,39 +6,57 @@
 <h3><strong>¿Estás seguro que deseas cancelar esta cita?</strong></h3>
 <form class="col-6 mt-5">
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Fecha y Hora</label>
-        <div class="col-sm-7">
-            <div class="form-control">@Model.DateTime</div>
+        <label class="col-sm-4 col-form-label">Fecha y Hora</label>
+        <div class="col-sm-8">
+            <div class="form-control">@Model.DateTime.ToString("f", new System.Globalization.CultureInfo("es-MX"))</div>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.PartnerPlaca)</label>
-        <div class="col-sm-7">
+        <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.PartnerPlaca)</label>
+        <div class="col-sm-8">
             <div class="form-control">@Model.PartnerPlaca</div>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.PartnerDriverName)</label>
-        <div class="col-sm-7">
+        <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.PartnerDriverName)</label>
+        <div class="col-sm-8">
             <div class="form-control">@Model.PartnerDriverName</div>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.AddressStart)</label>
-        <div class="col-sm-7">
+        <label class="col-sm-4 col-form-label">Servicio</label>
+        <div class="col-sm-8">
+            <div class="form-control">@Model.ServiceName</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.AddressStart)</label>
+        <div class="col-sm-8">
             <div class="form-control">@Model.AddressStart</div>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">@Html.DisplayNameFor(Model => Model.AddressEnd)</label>
-        <div class="col-sm-7">
+        <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.AddressEnd)</label>
+        <div class="col-sm-8">
             <div class="form-control">@Model.AddressEnd</div>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-form-label">Servicio</label>
-        <div class="col-sm-7">
-            <div class="form-control">@Model.ServiceName</div>
+        <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.AddressEnd)</label>
+        <div class="col-sm-8">
+            <div class="form-control">@Model.AddressEnd</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.Price)</label>
+        <div class="col-sm-8">
+            <div class="form-control">$@Model.Price</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(Model => Model.Comment)</label>
+        <div class="col-sm-8">
+            <div class="form-control">@Model.Comment</div>
         </div>
     </div>
 </form>
@@ -46,8 +64,8 @@
 <div class="col-6 mt-5 ml-5">
     <div class="row ml-5">
         <form method="post">
-            <button type="submit" class="btn btn-outline-success"
-                    asp-area="" asp-controller="Appointments" asp-action="DeleteAppointment" asp-route-id="@Model.Id">
+            <button type="submit" class="btn btn-outline-success" asp-area="" asp-controller="Appointments"
+                asp-action="DeleteAppointment" asp-route-id="@Model.Id">
                 Si, Cancelar!
             </button>
         </form>
