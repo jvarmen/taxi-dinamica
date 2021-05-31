@@ -4,7 +4,7 @@
 }
 
 <h3><strong>¿Estás seguro que deseas cancelar esta cita?</strong></h3>
-<form class="col-6 mt-5">
+<form class="col-12 col-md-6 mb-5">
     <div class="form-group row">
         <label class="col-sm-4 col-form-label">Fecha y Hora</label>
         <div class="col-sm-8">
@@ -61,11 +61,11 @@
     </div>
 </form>
 
-<div class="col-6 mt-5 ml-5">
-    <div class="row ml-5">
+<div class="col col-md-6 col-12">
+    <div class="row align-middle">
         <form method="post">
             <button type="submit" class="btn btn-outline-success" asp-area="" asp-controller="Appointments"
-                asp-action="DeleteAppointment" asp-route-id="@Model.Id">
+                asp-action="DeclineAppointment" asp-route-id="@Model.Id">
                 Si, Cancelar!
             </button>
         </form>

@@ -30,13 +30,6 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
         [BindProperty]
         public InputModel Input { get; set; }
 
-        public class InputModel
-        {
-            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
-            [EmailAddress]
-            public string Email { get; set; }
-        }
-
         public async Task<IActionResult> OnPostAsync()
         {
             if (this.ModelState.IsValid)
@@ -65,6 +58,13 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
             }
 
             return this.Page();
+        }
+
+        public class InputModel
+        {
+            [Required(ErrorMessage = GlobalConstants.ErrorMessages.Required)]
+            [EmailAddress]
+            public string Email { get; set; }
         }
     }
 }

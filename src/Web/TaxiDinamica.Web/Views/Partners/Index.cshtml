@@ -10,7 +10,7 @@
     <h2 style="font-size: 1.5rem"><strong>@this.ViewData["CategoryName"]?.ToString()</strong></h2>
 </header>
 
-@if (!Model.Partners.Any())
+@if (Model.Partners.Count() == 0)
 {
     <div class="row">
         <p class="my-5">Sin resultados.</p>

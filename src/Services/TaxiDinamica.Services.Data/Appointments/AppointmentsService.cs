@@ -114,7 +114,7 @@
             await this.appointmentsRepository.SaveChangesAsync();
         }
 
-        public async Task DeclineAsync(string id)
+        public async Task DeclineAsync(string id, string reason)
         {
             var appointment =
                 await this.appointmentsRepository
@@ -122,6 +122,7 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             appointment.Confirmed = false;
+            appointment.DriverMessage = reason;
             await this.appointmentsRepository.SaveChangesAsync();
         }
 

@@ -2,6 +2,6 @@
 {
     public static class PageSizesConstants
     {
-        public const int Partners = 8;
+        public const int Partners = 9;
     }
 }

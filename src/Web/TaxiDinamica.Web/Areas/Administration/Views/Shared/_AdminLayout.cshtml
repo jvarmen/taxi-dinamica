@@ -36,8 +36,6 @@
 </head>
 
 <body>
-    <partial name="_CookieConsentPartial" />
-
     <!-- ======= Header ======= -->
     <partial name="_MenuPartial" />
 
@@ -47,7 +45,7 @@
 
             <ol>
                 <li><a href="/">Inicio</a></li>
-                <li>Adminitración</li>
+                <li><a asp-area="Administration" asp-controller="Dashboard" asp-action="Index">Administración</a></li>
                 <li>@this.ViewData["Title"].ToString()</li>
             </ol>
             <h2>@this.ViewData["Title"].ToString()</h2>
@@ -59,10 +57,12 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-3">
-                    <partial name="_AdminSidebarPartial"></partial>
+                        <partial name="_AdminSidebarPartial"></partial>
                     </div>
                     <div class="col-lg-9">
-                        @this.RenderBody()
+                        <div class="container" style="overflow-x: scroll">
+                            @this.RenderBody()
+                        </div>
                     </div>
                 </div>
             </div>

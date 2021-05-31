@@ -7,78 +7,114 @@
 <h2>Nuevo Taxi</h2>
 <form method="post" enctype="multipart/form-data" class="pt-4">
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">Placa del Taxi</label>
-        <div class="col-md-7 col-sm-12">
+        <label class="col-md-4 col-sm-12 col-form-label">Placa del Taxi</label>
+        <div class="col-md-8 col-sm-12">
             <input type="text" asp-for="@Model.Placa" class="form-control" required="required">
             <span asp-validation-for="Placa" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.Image)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.Image" class="form-control-file image-upload" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.Image)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input image-upload" id="Image" lang="es" asp-for="@Model.Image"
+                    required="required">
+                <label class="custom-file-label" for="Image" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.PaseUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.PaseUrl" class="form-control-file" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.PaseUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="PaseUrl" lang="es" asp-for="@Model.PaseUrl"
+                    required="required">
+                <label class="custom-file-label" for="PaseUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="PaseUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.CedulaUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.CedulaUrl" class="form-control-fil" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.CedulaUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="CedulaUrl" lang="es" asp-for="@Model.CedulaUrl"
+                    required="required">
+                <label class="custom-file-label" for="CedulaUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="CedulaUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.TarjetonUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.TarjetonUrl" class="form-control-fil" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.TarjetonUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="TarjetonUrl" lang="es" asp-for="@Model.TarjetonUrl"
+                    required="required">
+                <label class="custom-file-label" for="TarjetonUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="TarjetonUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.SoatUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.SoatUrl" class="form-control-fil" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.SoatUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="SoatUrl" lang="es" asp-for="@Model.SoatUrl"
+                    required="required">
+                <label class="custom-file-label" for="SoatUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="SoatUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.LicenciaUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.LicenciaUrl" class="form-control-fil" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.LicenciaUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="LicenciaUrl" lang="es" asp-for="@Model.LicenciaUrl"
+                    required="required">
+                <label class="custom-file-label" for="LicenciaUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="LicenciaUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.OperacionUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.OperacionUrl" class="form-control-fil" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.OperacionUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="OperacionUrl" lang="es" asp-for="@Model.OperacionUrl"
+                    required="required">
+                <label class="custom-file-label" for="OperacionUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="OperacionUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.SeguroUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.SeguroUrl" class="form-control-fil" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.SeguroUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="SeguroUrl" lang="es" asp-for="@Model.SeguroUrl"
+                    required="required">
+                <label class="custom-file-label" for="SeguroUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="SeguroUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.TecnoUrl)</label>
-        <div class="col-md-7 col-sm-12">
-            <input type="file" asp-for="@Model.TecnoUrl" class="form-control-fil" required="required" />
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.TecnoUrl)</label>
+        <div class="col-md-8 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="TecnoUrl" lang="es" asp-for="@Model.TecnoUrl"
+                    required="required">
+                <label class="custom-file-label" for="TecnoUrl" data-browse="Elegir">Seleccionar Archivo</label>
+            </div>
             <span asp-validation-for="TecnoUrl" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">Espacios de Tiempo</label>
-        <div class="col-md-7 col-sm-12">
+        <label class="col-md-4 col-sm-12 col-form-label">Espacios de Tiempo</label>
+        <div class="col-md-8 col-sm-12">
             <select class="form-control">
                 <option>15 Minutos</option>
                 <option>20 Minutos</option>
@@ -87,38 +123,39 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">Categoría</label>
-        <div class="col-md-7 col-sm-12">
+        <label class="col-md-4 col-sm-12 col-form-label">Categoría</label>
+        <div class="col-md-8 col-sm-12">
             <select asp-for="@Model.CategoryId" class="form-control" asp-items="@categories">
             </select>
             <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">Ciudad</label>
-        <div class="col-md-7 col-sm-12">
+        <label class="col-md-4 col-sm-12 col-form-label">Ciudad</label>
+        <div class="col-md-8 col-sm-12">
             <select asp-for="@Model.CityId" class="form-control" asp-items="@cities">
             </select>
             <span asp-validation-for="CityId" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.DriverName)</label>
-        <div class="col-md-7 col-sm-12">
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.DriverName)</label>
+        <div class="col-md-8 col-sm-12">
             <input type="text" asp-for="@Model.DriverName" class="form-control" required="required">
             <span asp-validation-for="DriverName" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.DriverContact)</label>
-        <div class="col-md-7 col-sm-12">
+        <label class="col-md-4 col-sm-12 col-form-label">@Html.DisplayNameFor(Model => Model.DriverContact)</label>
+        <div class="col-md-8 col-sm-12">
             <input type="number" asp-for="@Model.DriverContact" class="form-control" required="required">
             <span asp-validation-for="DriverContact" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group row mt-4">
         <div class="col col-sm-6">
-            <a class="btn btn-danger" asp-area="Administration" asp-controller="Partners" asp-action="Index">Cancel</a>
+            <a class="btn btn-danger" asp-area="Administration" asp-controller="Partners"
+                asp-action="Index">Cancelar</a>
         </div>
         <div class="col col-sm-6 text-right">
             <button type="submit" class="btn btn-success" asp-area="Administration" asp-controller="Partners"
@@ -131,4 +168,10 @@
 
 @section Scripts {
 <script src="~/js/upload-image.js" asp-append-version="true"></script>
+<script type="application/javascript">
+    $('input[type="file"]').change(function (e) {
+        var fileName = e.target.files[0].name;
+        $(e.target).parent('div').find('label').text(fileName);
+    });
+</script>
 }

@@ -18,6 +18,7 @@
     using TaxiDinamica.Services.Data.Partners;
     using TaxiDinamica.Services.Data.PartnerServicesServices;
     using TaxiDinamica.Services.Data.Services;
+    using TaxiDinamica.Web.ViewModels.Appointments;
     using TaxiDinamica.Web.ViewModels.Common.SelectLists;
     using TaxiDinamica.Web.ViewModels.Partners;
 
@@ -57,9 +58,6 @@
 
         public async Task<IActionResult> Details(string id)
         {
-            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
-            var userId = await this.userManager.GetUserIdAsync(user);
-
             var viewModel = await this.partnersService.GetByIdAsync<PartnerWithServicesViewModel>(id);
 
             if (viewModel == null)
@@ -216,11 +214,39 @@
             return this.RedirectToAction("Details", new { id = partnerId });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> DeclineAppointment(string id, string partnerId)
+        [HttpGet]
+        public async Task<IActionResult> DeclineAppointment(string id)
         {
-            await this.appointmentsService.DeclineAsync(id);
-            return this.RedirectToAction("Details", new { id = partnerId });
+            var viewModel = await this.appointmentsService.GetByIdAsync<AppointmentViewModel>(id);
+
+            if (viewModel == null)
+            {
+                return new StatusCodeResult(404);
+            }
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeclineAppointment(AppointmentViewModel input, string id)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var appointment = await this.appointmentsService.GetByIdAsync<AppointmentViewModel>(id);
+            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+            var userId = await this.userManager.GetUserIdAsync(user);
+
+            if (appointment == null || appointment.Partner.OwnerId != userId)
+            {
+                return this.NotFound();
+            }
+
+            await this.appointmentsService.DeclineAsync(id, input.DriverMessage);
+
+            return this.RedirectToAction("Details", new { id = appointment.Partner.Id });
         }
     }
 }

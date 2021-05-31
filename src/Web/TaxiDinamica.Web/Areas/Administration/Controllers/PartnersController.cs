@@ -53,6 +53,21 @@
             return this.View(viewModel);
         }
 
+        public async Task<IActionResult> Details(string id)
+        {
+            var viewModel = await this.partnersService.GetByIdAsync<PartnerViewModel>(id);
+
+            string[] docs = { "DocPaseUrl", "DocCedulaUrl", "DocTarjetonUrl", "DocSoatUrl", "DocLicenciaUrl", "DocOperacionUrl", "DocSeguroUrl", "DocTecnoUrl" };
+            ViewData["documents"] = docs;
+
+            if (viewModel == null)
+            {
+                return new StatusCodeResult(404);
+            }
+
+            return this.View(viewModel);
+        }
+
         public async Task<IActionResult> AddPartner()
         {
             var categories = await this.categoriesService.GetAllAsync<CategorySelectListViewModel>();

@@ -97,7 +97,7 @@ using System.Globalization;
 
             var callbackUrl = this.Url.Page("/Appoinments");
 
-            // Send Email 
+            // Send Email
             var uemail = user?.Email;
             await this.emailSender.SendEmailAsync(
                 uemail,

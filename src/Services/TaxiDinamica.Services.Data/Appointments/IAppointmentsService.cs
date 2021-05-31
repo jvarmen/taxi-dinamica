@@ -22,7 +22,7 @@
 
         Task ConfirmAsync(string id);
 
-        Task DeclineAsync(string id);
+        Task DeclineAsync(string id, string reason);
 
         Task RateAppointmentAsync(string id);
     }

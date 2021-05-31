@@ -28,7 +28,7 @@
         // The Partner can Confirm or Decline an appointment
         public bool? Confirmed { get; set; }
 
-        // For every past (and confirmed) appointment the User can Rate the Partner
+        // Idea: For every past (and confirmed) appointment the User can Rate the Partner
         // But rating can be given only once for each appointment
         public bool? IsPartnerRatedByTheUser { get; set; }
 
@@ -47,6 +47,8 @@
         [MaxLength(GlobalConstants.DataValidations.DescriptionMaxLength,
                     ErrorMessage = GlobalConstants.ErrorMessages.DescriptionMax)]
         public string Comment { get; set; }
+        
+        public string DriverMessage { get; set; }
 
         public int Price { get; set; } = 0;
     }

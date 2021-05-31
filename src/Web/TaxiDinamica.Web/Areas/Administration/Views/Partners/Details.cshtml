@@ -1,8 +1,11 @@
-﻿@model TaxiDinamica.Web.ViewModels.Partners.PartnerWithServicesViewModel
+@using System
+@using System.Reflection
+@model TaxiDinamica.Web.ViewModels.Partners.PartnerViewModel
 @{
     this.ViewData["Title"] = "Gestionar Taxi: " + Model.Placa;
     this.ViewData["cClass"] = "partner-details";
 }
+
 <div class="row row-eq-height">
     <div class="col-lg-5">
         <div class="partner-details-slider swiper-container">
@@ -24,52 +27,41 @@
     <div class="col-lg-7">
         <div class="partner-description features">
             <div class="col-md-12">
-                <h2>Servicios Ofrecidos</h2>
-                <p>Cambia la disponibilidad de los servicios</p>
+                <h2>Documentos Importados</h2>
+                <p>Lista de archivos enviados.</p>
             </div>
         </div>
         <table class="table table-hover table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Servicio</th>
-                    <th scope="col">Disponibilidad</th>
+                    <th scope="col">Archivo</th>
+                    <th scope="col">Descargar</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var service in Model.Services)
+                @foreach (var docs in Model.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
                 {
                     <tr>
-                        <th scope="row">@service.ServiceName</th>
+                        <th scope="row">@docs.Name</th>
                         <td>
-                            @if (service.Available == true)
-                            {
-                                <span class="badge badge-success">Disponible</span>
-                            }
-                            else
-                            {
-                                <span class="badge badge-danger">No Disponible</span>
-                            }
+                            <span class="badge badge-danger">No Disponible</span>
+                            <span class="badge badge-success">Descargar</span>
                         </td>
                         <td>
-                            <form method="post">
+                            @* <form method="post">
                                 <button type="submit" class="btn btn-outline-info btn-sm" asp-area="Manager"
                                 asp-controller="Partners" asp-action="ChangeServiceAvailableStatus"
                                 asp-route-PartnerId="@Model.Id" asp-route-serviceId="@service.ServiceId">
-                                    Cambiar
+                                Rechazar
                                 </button>
-                            </form>
+                                </form> *@
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-</div>
-<hr class="bg-dark mx-4" style="height: 3px;" />
-
-<div>
-    @await Component.InvokeAsync("AllAppointmentsByPartner", Model.Id)
 </div>
 
 @section Scripts {

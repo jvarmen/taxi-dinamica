@@ -24,7 +24,7 @@
             var partners =
                 await this.partnersRepository
                 .All()
-                .OrderBy(x => x.Placa)
+                .OrderBy(x => x.Id)
                 .To<T>().ToListAsync();
             return partners;
         }
@@ -35,7 +35,7 @@
                 await this.partnersRepository
                 .All()
                 .Where(x => x.OwnerId == ownerId)
-                .OrderBy(x => x.Placa)
+                .OrderBy(x => x.Id)
                 .To<T>().ToListAsync();
             return partners;
         }

@@ -1,0 +1,33 @@
+﻿@model TaxiDinamica.Web.ViewModels.Appointments.AppointmentViewModel
+@{
+    this.ViewData["Title"] = "Cancelar Cita";
+}
+
+<div class="row">
+    @await Component.InvokeAsync("AppointmentDetails", @Model.Id)
+
+    <div class="col-md-6 col-12">
+        <h3><strong>¿Está seguro que desea rechazar?</strong></h3>
+        <form method="post" class="mt-5">
+            <div class="form-group row">
+                <label class="col-md-5 col-sm-12 col-form-label">@Html.DisplayNameFor(Model =>
+                    Model.DriverMessage)</label>
+                <div class="col-md-7 col-sm-12">
+                    <textarea asp-for="@Model.DriverMessage" class="form-control" required="required"
+                        placeholder="Escribe la razón por la cual se rechaza la oferta del cliente."></textarea>
+                    <span asp-validation-for="DriverMessage" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row align-middle">
+                <div class="mr-5">
+                    <a class="btn btn-danger" asp-area="Manager" asp-controller="Partners" asp-action="Details"
+                        asp-route-id='@Model.PartnerId'>Volver atrás</a>
+                </div>
+                <button type="submit" class="btn btn-outline-success" asp-area="Manager" asp-controller="Partners"
+                    asp-action="DeclineAppointment" asp-route-id='@Model.Id'>
+                    Enviar respuesta
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

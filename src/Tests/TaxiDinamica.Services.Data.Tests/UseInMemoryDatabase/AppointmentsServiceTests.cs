@@ -81,7 +81,7 @@
             var newGuidId = Guid.NewGuid().ToString();
             var appointment = await this.CreateAppointmentAsync(newGuidId);
 
-            await this.Service.DeclineAsync(newGuidId);
+            await this.Service.DeclineAsync(newGuidId, "");
             var result = await this.DbContext.Appointments.Where(x => x.Id == newGuidId).Select(x => x.Confirmed).FirstOrDefaultAsync();
 
             var appointmentsCount = await this.DbContext.Appointments.CountAsync();

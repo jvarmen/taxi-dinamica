@@ -14,7 +14,7 @@ namespace TaxiDinamica.Web.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.WebUtilities;
     using TaxiDinamica.Common;
     using TaxiDinamica.Data.Models;
-    
+
     [AllowAnonymous]
     public abstract class ResendEmailConfirmationModel : PageModel
     {
